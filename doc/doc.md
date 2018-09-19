@@ -38,10 +38,12 @@
 
 ### Informazioni sul progetto
 
-In questo capitolo raccogliere le informazioni relative al progetto, ad esempio:
--   Allievo/i e docente/i coinvolti nel progetto e rispettivi ruoli,
--   scuola ,sezione, materia/e,
--   date di inizio e termine di consegna,
+Allievo: Giulio Bosco \
+Docenti: Luca Muggiasca, Adriano Barchi, Francesco Mussi, Elisa Nannini \
+Scuola: Scuola Arti e Mestieri di Trevano \
+Sezione: SAMT I3AA \
+Data inizio: 05.09.2018 \
+Data fine: 09.11.2018 
 
 ### Abstract
 
@@ -84,38 +86,16 @@ dovrebbe essere quello di far conoscere all’utente il contenuto di base
 
 ### Scopo
 
-  Lo scopo del progetto (scopi didattici/scopi operativi). Dovrebbe
-  descrivere il mandato, ma non vanno ricopiate le informazioni del
-  quaderno dei compiti (che va invece allegato).
-
+Una società sportiva richiede una applicazione web per raccogliere le iscrizioni al corso di introduzione alla disciplina praticata. L'applicazione deve salvare i dati in 2 file CSV, uno con tutte le registrazioni mentre il secondo con tutte le registrazioni eseguite in quel giorno.
 
 ## Analisi
 
 ### Analisi del dominio
 
-  Questo capitolo dovrebbe descrivere il contesto in cui il prodotto verrà
-  utilizzato, da questa analisi dovrebbero scaturire le risposte a quesiti
-  quali ad esempio:
-
-  -   Background/Situazione iniziale
-
-  -   Quale è e come è organizzato il contesto in cui il prodotto dovrà
-      funzionare?
-
-  -   Come viene risolto attualmente il problema? Esiste già un prodotto
-      simile?
-
-  -   Chi sono gli utenti? Che bisogni hanno? Come e dove lavorano?
-
-  -   Che competenze/conoscenze/cultura posseggono gli utenti in relazione
-      con il problema?
-
-  -   Esistono convenzioni/standard applicati nel dominio?
-
-  -   Che conoscenze teoriche bisogna avere/acquisire per poter operare
-      efficacemente nel dominio?
-
-  -   …
+Attualmente non vi è nessun prodotto che esegue le registrazione per la società sportiva.
+Siccome l'applicazione servirà per raccogliere dati di persone sconosciute si presume che gli utenti non abbiano alcuna competenza informatica, l'applicazione potrebbe venire utilizzata sa qualunque dispositivo che possa avere accesso ad internet, quindi:
+ - Dispositivi Mobile (Smartphone / Tablet)
+ - Dispositivi Deskto
 
 ### Analisi e specifica dei requisiti
 
