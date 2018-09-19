@@ -1,17 +1,7 @@
 # Requisites Table
 ##### Giulio Bosco - Progetto 1
 
-|ID  |REQ-001                                        |
-|----|------------------------------------------------|
-|**Nome**    |Tipo Software |
-|**Priorità**|1                     |
-|**Versione**|1.0                   |
-|**Note**    |Web-app|
-|            |**Sotto requisiti** |
-|**001**     | registrazione utenti  |
-|**002**     | pagina con campi obbligatori e con validazione                |
-  
-|ID  |REQ-002                                       |
+|ID  |REQ-001                                       |
 |----|------------------------------------------------|
 |**Nome**    |Dati |
 |**Priorità**|1                     |
@@ -23,29 +13,34 @@
 |**003**     | separatore ";" |
 |**004**     | permessi di scrittura |
 
-|ID  |REQ-003                                    |
+#
+
+|ID  |REQ-002                                    |
 |----|------------------------------------------------|
 |**Nome**    |Pagine |
 |**Priorità**|2                     |
 |**Versione**|1.0                   |
-|**Note**    |4 pagine|
+|**Note**    | ci devono essere 4 pagine.|
 |            |**Sotto requisiti** |
-|**001**     | introduzione  |
-|**002**     | inserzione dati |
-|**003**     | controllo dati |
-|**004**     | lettura dati da CSV |
+|**001**     | ci deve essere una pagina con una descrizione del prodotto: introduzione  |
+|**002**     | ci deve essere una pagina di inserimento dei dati. |
+|**003**     | ci deve essere una pagina per controllare i dati precedentemente inseriti. |
+|**004**     | ci deve essere una pagina per visualizzare i dati appena inseriti. |
 
-|ID  |REQ-004                                        |
+#
+
+|ID  |REQ-003                                        |
 |----|------------------------------------------------|
 |**Nome**    | Pagina _Introduzione_ |
 |**Priorità**|2                     |
 |**Versione**|1.0                   |
 |**Note**    |pagina di benventuto|
 |            |**Sotto requisiti** |
-|**001**     | tasto -> pagina registrazione  |
-|**002**     | pagina con campi obbligatori e con validazione                |
+|**001**     | Ci deve essere un tasto che porta alla pagina di inserimento dei dati.  |
 
-|ID  |REQ-005                                       |
+#
+
+|ID  |REQ-004                                       |
 |----|------------------------------------------------|
 |**Nome**    |Pagina _Inserzione Dati_ |
 |**Priorità**|1                     |
@@ -53,10 +48,12 @@
 |**Note**    |Form dei dati|
 |            |**Sotto requisiti** |
 |**001**     | Validazione dei dati  |
-|**002**     | Tasto -> Annullamento Inserimento |
-|**003**     | Tasto -> Controllo Dati |
+|**002**     | Ci deve essere un tasto che annulli l'inserimento fatto, cancelli tutti i contenuti dei campi. |
+|**003**     | Ci deve essere un tasto che porti alla pagina di controllo dei dati. |
 
-|ID  |REQ-006                                        |
+#
+
+|ID  |REQ-005                                        |
 |----|------------------------------------------------|
 |**Nome**    |Pagina _Controllo Dati_ |
 |**Priorità**|1                     |
@@ -64,22 +61,28 @@
 |**Note**    |Controllare i dati|
 |            |**Sotto requisiti** |
 |**001**     | Mostrare dati come nel form di registrazione |
-|**002**     | tasto -> correzione |
-|**003**     | tasto -> iscrizione, salvare i dati e andare alla pagina lettura dati |
+|**002**     | Ci deve essere un tasto per correggere i dati inseriti, che riporti alla pagina: _Inserzione Dati_ |
+|**003**     | Ci deve essere un tasto per la registrazione, che scriva i dati sul csv e che poi porti alla pagina di _Lettura dei dati dal CSV_ |
 
-|ID  |REQ-007                                        |
+#
+
+|ID  |REQ-006                                        |
 |----|------------------------------------------------|
 |**Nome**    |Pagina _ Lettura dati da CSV_ |
 |**Priorità**|2                    |
 |**Versione**|1.0                   |
 |**Note**    |presentazione dati|
 |            |**Sotto requisiti** |
-|**001**     | design pagina registrazione  |
+|**001**     | la grafica di questa pagina deve essere uguale alla pagina di registrazione |
+|**002**     | la posizione dei campi deve essere uguale alla pagina di registrazione. |
 |**002**     | dati letti da "Registrazione_yyyy_mm_dd.csv" |
-|**003**     | ritorno a pagina benvenuto |
+|**003**     | Teasto per ritornare alla pagina benvenuto |
 
-|ID  |REQ-008                                        |
+#
+
+|ID  |REQ-007|
 |----|------------------------------------------------|
 |**Nome**    | Grafica |
-|**Priorità**|3                     |
-|**Versione**|1.0                   |
+|**Priorità**|3|
+|**Versione**|1.0|
+|**Note**    |La grafica delle pagine è a discrezione del esecutore. |
