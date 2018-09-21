@@ -99,52 +99,9 @@ Siccome l'applicazione servirà per raccogliere dati di persone sconosciute si p
 
 ### Analisi e specifica dei requisiti
 
-  Il progettista, dopo aver ricevuto il mandato, in collaborazione con il
-  committente redige una lista di requisiti. Durante questi incontri,
-  tramite interviste (da inserire nei diari), il progettista deve cercare
-  di rispondere alle seguenti domande:
-
-  -   Quali sono i bisogni del committente?
-
-  -   Quali funzioni deve svolgere il prodotto?
-
-  -   Come devono essere implementate?
-
-  -   L’utente, come vorrebbe/dovrebbe interagire con il prodotto?
-
-  -   Come verrà utilizzato il prodotto?
-
-  -   Che tipo di interfaccia si immagina?
-
-  -   Che prestazioni minime deve fornire il prodotto?
-
-  -   Che grado di sicurezza deve avere il prodotto?
-
-  -   …
-
-  In base alla lista dei requisiti e all’analisi degli stessi, il
-  progettista redige una *specifica dei requisiti* in cui elenca e
-  descrive in modo dettagliato quali sono le funzionalità che il prodotto
-  fornirà. La specifica dovrebbe essere abbastanza dettagliata da poter
-  essere utilizzata come base per lo sviluppo, ma non troppo; ad esempio
-  non dovrebbe contenere dettagli di implementazione, o definizioni
-  dettagliate dell’interfaccia grafica a meno che questi non siano
-  considerati cruciali. Non si deve scordare che i requisiti non
-  rappresentano delle attività bensì delle caratteristiche che il prodotto
-  dovrà possedere.
 
 
-|ID  |REQ-001                                        |
-|----|------------------------------------------------|
-|**Nome**    |Tipo Software |
-|**Priorità**|1                     |
-|**Versione**|1.0                   |
-|**Note**    |Web-app|
-|            |**Sotto requisiti** |
-|**001**     | registrazione utenti  |
-|**002**     | pagina con campi obbligatori e con validazione                |
-  
-|ID  |REQ-002                                       |
+|ID  |REQ-001                                       |
 |----|------------------------------------------------|
 |**Nome**    |Dati |
 |**Priorità**|1                     |
@@ -156,29 +113,34 @@ Siccome l'applicazione servirà per raccogliere dati di persone sconosciute si p
 |**003**     | separatore ";" |
 |**004**     | permessi di scrittura |
 
-|ID  |REQ-003                                    |
+#
+
+|ID  |REQ-002                                    |
 |----|------------------------------------------------|
 |**Nome**    |Pagine |
 |**Priorità**|2                     |
 |**Versione**|1.0                   |
-|**Note**    |4 pagine|
+|**Note**    | ci devono essere 4 pagine.|
 |            |**Sotto requisiti** |
-|**001**     | introduzione  |
-|**002**     | inserzione dati |
-|**003**     | controllo dati |
-|**004**     | lettura dati da CSV |
+|**001**     | ci deve essere una pagina con una descrizione del prodotto: introduzione  |
+|**002**     | ci deve essere una pagina di inserimento dei dati. |
+|**003**     | ci deve essere una pagina per controllare i dati precedentemente inseriti. |
+|**004**     | ci deve essere una pagina per visualizzare i dati appena inseriti. |
 
-|ID  |REQ-004                                        |
+#
+
+|ID  |REQ-003                                        |
 |----|------------------------------------------------|
 |**Nome**    | Pagina _Introduzione_ |
 |**Priorità**|2                     |
 |**Versione**|1.0                   |
 |**Note**    |pagina di benventuto|
 |            |**Sotto requisiti** |
-|**001**     | tasto -> pagina registrazione  |
-|**002**     | pagina con campi obbligatori e con validazione                |
+|**001**     | Ci deve essere un tasto che porta alla pagina di inserimento dei dati.  |
 
-|ID  |REQ-005                                       |
+#
+
+|ID  |REQ-004                                       |
 |----|------------------------------------------------|
 |**Nome**    |Pagina _Inserzione Dati_ |
 |**Priorità**|1                     |
@@ -186,10 +148,12 @@ Siccome l'applicazione servirà per raccogliere dati di persone sconosciute si p
 |**Note**    |Form dei dati|
 |            |**Sotto requisiti** |
 |**001**     | Validazione dei dati  |
-|**002**     | Tasto -> Annullamento Inserimento |
-|**003**     | Tasto -> Controllo Dati |
+|**002**     | Ci deve essere un tasto che annulli l'inserimento fatto, cancelli tutti i contenuti dei campi. |
+|**003**     | Ci deve essere un tasto che porti alla pagina di controllo dei dati. |
 
-|ID  |REQ-006                                        |
+#
+
+|ID  |REQ-005                                        |
 |----|------------------------------------------------|
 |**Nome**    |Pagina _Controllo Dati_ |
 |**Priorità**|1                     |
@@ -197,108 +161,76 @@ Siccome l'applicazione servirà per raccogliere dati di persone sconosciute si p
 |**Note**    |Controllare i dati|
 |            |**Sotto requisiti** |
 |**001**     | Mostrare dati come nel form di registrazione |
-|**002**     | tasto -> correzione |
-|**003**     | tasto -> iscrizione, salvare i dati e andare alla pagina lettura dati |
+|**002**     | Ci deve essere un tasto per correggere i dati inseriti, che riporti alla pagina: _Inserzione Dati_ |
+|**003**     | Ci deve essere un tasto per la registrazione, che scriva i dati sul csv e che poi porti alla pagina di _Lettura dei dati dal CSV_ |
 
-|ID  |REQ-007                                        |
+#
+
+|ID  |REQ-006                                        |
 |----|------------------------------------------------|
 |**Nome**    |Pagina _ Lettura dati da CSV_ |
 |**Priorità**|2                    |
 |**Versione**|1.0                   |
 |**Note**    |presentazione dati|
 |            |**Sotto requisiti** |
-|**001**     | design pagina registrazione  |
+|**001**     | la grafica di questa pagina deve essere uguale alla pagina di registrazione |
+|**002**     | la posizione dei campi deve essere uguale alla pagina di registrazione. |
 |**002**     | dati letti da "Registrazione_yyyy_mm_dd.csv" |
-|**003**     | ritorno a pagina benvenuto |
+|**003**     | Teasto per ritornare alla pagina benvenuto |
 
-|ID  |REQ-008                                        |
+#
+
+|ID  |REQ-007|
 |----|------------------------------------------------|
 |**Nome**    | Grafica |
-|**Priorità**|3                     |
-|**Versione**|1.0                   |
+|**Priorità**|3|
+|**Versione**|1.0|
+|**Note**    |La grafica delle pagine è a discrezione del esecutore. |
 
-**Spiegazione elementi tabella dei requisiti:**
-
-**ID**: identificativo univoco del requisito
-
-**Nome**: breve descrizione del requisito
-
-**Priorità**: indica l’importanza di un requisito nell’insieme del
-progetto, definita assieme al committente. Ad esempio poter disporre di
-report con colonne di colori diversi ha priorità minore rispetto al
-fatto di avere un database con gli elementi al suo interno. Solitamente
-si definiscono al massimo di 2-3 livelli di priorità.
-
-**Versione**: indica la versione del requisito. Ogni modifica del
-requisito avrà una versione aggiornata.
-
-Sulla documentazione apparirà solamente l’ultima versione, mentre le
-vecchie dovranno essere inserite nei diari.
-
-**Note**: eventuali osservazioni importanti o riferimenti ad altri
-requisiti.
-
-**Sotto requisiti**: elementi che compongono il requisito.
-
-
-### Use case
-
-I casi d’uso rappresentano l’interazione tra i vari attori e le
-funzionalità del prodotto.
 
 ### Pianificazione
-
-Prima di stabilire una pianificazione bisogna avere almeno una vaga idea
-del modello di sviluppo che si intende adottare. In questa sezione
-bisognerà inserire il modello concettuale di sviluppo che si seguirà
-durante il progetto. Gli elementi di riferimento per una buona
-pianificazione derivano da una scomposizione top-down della problematica
-del progetto.
-
-La pianificazione può essere rappresentata mediante un diagramma di
-Gantt.
-
-Se si usano altri metodi di pianificazione (es scrum), dovranno apparire
-in questo capitolo.
+![Project Planning](img/gant.png)
 
 ### Analisi dei mezzi
 
-Elencare e *descrivere* i mezzi disponibili per la realizzazione del
-progetto. Ricordarsi di sempre descrivere nel dettaglio le versioni e il
-modello di riferimento.
+#### Software
+- Librerie:
+    - JavaScript
+        - [AngularJS - v1.3.5](https://angularjs.org/)
+        - [jQuery - v3.2.1](https://jquery.com/)
+    - CSS
+        - [Bootstrap - v3.3.4](http://getbootstrap.com/2.3.2/)
+        - [FontAwesome - 4.3.0](https://fontawesome.com/)
+- IDE: 
+    - [jetBrains IntelliJ IDEA](https://www.jetbrains.com/idea/)
+- Progettazione:
+    - [StarUML](http://staruml.io)
+    - [Adobe PhotoShop](https://www.adobe.com/products/photoshop.html) 
+    - [Gantt Project](https://www.ganttproject.biz)
 
-SDK, librerie, tools utilizzati per la realizzazione del progetto e
-eventuali dipendenze.
-
-Su quale piattaforma dovrà essere eseguito il prodotto? Che hardware
-particolare è coinvolto nel progetto? Che particolarità e limitazioni
-presenta? Che hw sarà disponibile durante lo sviluppo?
+#### Hardware
+- Sviluppo
+    - portatile: MacBookPro 2017
+        - Processore: Intel Core i7
+        - RAM: 16GB
+        - Disk: 1TB SSD
 
 ## Progettazione
 
-Questo capitolo descrive esaustivamente come deve essere realizzato il
-prodotto fin nei suoi dettagli. Una buona progettazione permette
-all’esecutore di evitare fraintendimenti e imprecisioni
-nell’implementazione del prodotto.
-
 ### Design dell’architettura del sistema
 
-Descrive:
-
--   La struttura del programma/sistema lo schema di rete...
-
--   Gli oggetti/moduli/componenti che lo compongono.
-
--   I flussi di informazione in ingresso ed in uscita e le
-    relative elaborazioni. Può utilizzare *diagrammi di flusso dei
-    dati* (DFD).
-
--   Eventuale sitemap
+![Pages Diagram](img/pages_diagram.png)
 
 ### Design dei dati e database
 
-Descrizione delle strutture di dati utilizzate dal programma in base
-agli attributi e le relazioni degli oggetti in uso.
+Salvataggio dei dati eseguito su due file CSV.
+- Total CSV data file:
+    - Contiene tutti i record
+    - Path: "/Registrazioni/Registrazioni_tutte.csv"
+- Daily CSV data file:
+    - Contiene le registrazioni di un giorno.
+    - Ogni giorno viene creato un nuovo file.
+    - Path: "/Registrazioni/Registrazione_YYYY_MM_DD.csv"
 
 ### Schema E-R, schema logico e descrizione.
 
@@ -313,6 +245,8 @@ sulle informazioni ricavate durante la fase di analisi e realizzata
 tramite mockups.
 
 ### Design procedurale
+
+![Data Diagram](img/data_diagram.png)
 
 Descrive i concetti dettagliati dell’architettura/sviluppo utilizzando
 ad esempio:
