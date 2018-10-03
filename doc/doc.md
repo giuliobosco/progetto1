@@ -43,7 +43,7 @@ Docenti: Luca Muggiasca, Adriano Barchi, Francesco Mussi, Elisa Nannini \
 Scuola: Scuola Arti e Mestieri di Trevano \
 Sezione: SAMT I3AA \
 Data inizio: 05.09.2018 \
-Data fine: 09.11.2018 
+Data fine: 09.11.2018
 
 ### Abstract
 
@@ -201,11 +201,11 @@ Siccome l'applicazione servirà per raccogliere dati di persone sconosciute si p
     - CSS
         - [Bootstrap - v3.3.4](http://getbootstrap.com/2.3.2/)
         - [FontAwesome - 4.3.0](https://fontawesome.com/)
-- IDE: 
+- IDE:
     - [jetBrains IntelliJ IDEA](https://www.jetbrains.com/idea/)
 - Progettazione:
     - [StarUML](http://staruml.io)
-    - [Adobe PhotoShop](https://www.adobe.com/products/photoshop.html) 
+    - [Adobe PhotoShop](https://www.adobe.com/products/photoshop.html)
     - [Gantt Project](https://www.ganttproject.biz)
 
 #### Hardware
@@ -219,6 +219,9 @@ Siccome l'applicazione servirà per raccogliere dati di persone sconosciute si p
 
 ### Design dell’architettura del sistema
 
+Quando si entra nella prima pagina vi è un introduzione, dopo vi è una pagina
+per l'inserimento dei dati, che ha 2 bottoni uno per procedere, il secondo
+
 ![Pages Diagram](img/pages_diagram.png)
 
 ### Design dei dati e database
@@ -231,6 +234,25 @@ Salvataggio dei dati eseguito su due file CSV.
     - Contiene le registrazioni di un giorno.
     - Ogni giorno viene creato un nuovo file.
     - Path: "/Registrazioni/Registrazione_YYYY_MM_DD.csv"
+
+Dati salvati nel CSV:  
+Struttura dei dati:
+
+|nome campo|tipo campo|
+|-|-|
+|data-ora|s|
+|nome|testo|
+|cognome|test|
+|data_di_nascita|data|
+|via|testo|
+|numero civico|numero 3 cifre|
+|citt&agrave;|testo|
+|nap|numero 5 cifre|
+|numero di telefono|testo (sole cifre, spazi, trattini)|
+|e-mail|testo (controllo formato email)|
+|genere|testo (solo M o F)|
+|hobby|testo|
+|professione|testo|
 
 ### Schema E-R, schema logico e descrizione.
 
