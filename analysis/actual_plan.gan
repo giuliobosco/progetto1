@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2018-09-03" view-index="0" gantt-divider-location="424" resource-divider-location="300" version="2.8.9" locale="en_CH">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2018-08-30" view-index="0" gantt-divider-location="424" resource-divider-location="300" version="2.8.9" locale="en_CH">
     <description/>
     <view zooming-state="default:2" id="gantt-chart">
-        <field id="tpd3" name="Name" width="264" order="0"/>
-        <field id="tpd4" name="Begin date" width="67" order="1"/>
-        <field id="tpd5" name="End date" width="72" order="2"/>
+        <field id="tpd3" name="Name" width="269" order="0"/>
+        <field id="tpd4" name="Begin date" width="72" order="1"/>
+        <field id="tpd5" name="End date" width="77" order="2"/>
     </view>
     <view id="resource-table">
         <field id="0" name="Name" width="209" order="0"/>
@@ -33,7 +33,7 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="0" name="analysis" meeting="false" start="2018-09-05" duration="7" complete="0" expand="true">
+        <task id="0" name="analysis" meeting="false" start="2018-09-05" duration="6" complete="0" expand="true">
             <depend id="12" type="2" difference="0" hardness="Strong"/>
             <task id="1" name="leggere QDC" color="#8cb6ce" meeting="false" start="2018-09-05" duration="1" complete="0" thirdDate="2018-08-29" thirdDate-constraint="0" expand="true">
                 <depend id="2" type="2" difference="0" hardness="Strong"/>
@@ -47,16 +47,19 @@
             <task id="8" name="specifica dei requisiti" color="#8cb6ce" meeting="false" start="2018-09-14" duration="1" complete="0" thirdDate="2018-08-29" thirdDate-constraint="0" expand="true">
                 <depend id="11" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="11" name="pianificazione" color="#8cb6ce" meeting="false" start="2018-09-19" duration="3" complete="0" thirdDate="2018-08-29" thirdDate-constraint="0" expand="true">
+            <task id="11" name="pianificazione" color="#8cb6ce" meeting="false" start="2018-09-19" duration="2" complete="0" thirdDate="2018-08-29" thirdDate-constraint="0" expand="true">
                 <depend id="12" type="2" difference="0" hardness="Strong"/>
             </task>
         </task>
-        <task id="12" name="progettazione" color="#8cb6ce" meeting="false" start="2018-09-28" duration="3" complete="0" thirdDate="2018-08-29" thirdDate-constraint="0" expand="true">
+        <task id="12" name="progettazione" color="#8cb6ce" meeting="false" start="2018-09-26" duration="4" complete="0" thirdDate="2018-08-29" thirdDate-constraint="0" expand="true">
             <depend id="28" type="2" difference="0" hardness="Strong"/>
-            <task id="23" name="design salvataggio dati" color="#8cb6ce" meeting="false" start="2018-09-28" duration="1" complete="0" thirdDate="2018-09-05" thirdDate-constraint="0" expand="true">
+            <task id="23" name="design salvataggio dati" color="#8cb6ce" meeting="false" start="2018-09-26" duration="1" complete="0" thirdDate="2018-09-05" thirdDate-constraint="0" expand="true">
                 <depend id="20" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="20" name="design interfaccie" color="#8cb6ce" meeting="false" start="2018-10-03" duration="2" complete="0" thirdDate="2018-09-05" thirdDate-constraint="0" expand="true"/>
+            <task id="20" name="design interfaccie" color="#8cb6ce" meeting="false" start="2018-09-28" duration="1" complete="0" thirdDate="2018-09-05" thirdDate-constraint="0" expand="true">
+                <depend id="54" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="54" name="desing tests" color="#8cb6ce" meeting="false" start="2018-10-03" duration="2" complete="0" thirdDate="2018-09-26" thirdDate-constraint="0" expand="true"/>
         </task>
         <task id="48" name="fine progettazione" color="#8cb6ce" meeting="true" start="2018-10-10" duration="0" complete="0" thirdDate="2018-09-05" thirdDate-constraint="0" expand="true"/>
         <task id="28" name="implementazione" color="#000000" meeting="false" start="2018-10-10" duration="6" complete="0" thirdDate="2018-08-29" thirdDate-constraint="0" expand="true">
