@@ -31,6 +31,10 @@ package helper.validators;
  */
 public class NameValidator extends Validator {
 
+    public NameValidator(int minLength, int maxLength) {
+        super(minLength, maxLength);
+    }
+
     /**
      * Check if all the chars in the string are letters, they can be also special letter, as &egrave;
      * @param value Value to check.
