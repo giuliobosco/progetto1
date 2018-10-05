@@ -70,19 +70,30 @@ public class IntegerValidator extends Validator {
         } else {
             try {
                 int n = Integer.parseInt(value);
-                if (n < minValue) {
-                    this.errorMessagge = "Too small value: " + value;
-                    return false;
-                } else if (n > maxValue) {
-                    this.errorMessagge = "Too large Value: " + value;
-                    return false;
-                } else {
-                    return true;
-                }
+                return this.isValid(n);
             } catch (NumberFormatException nfe) {
                 this.errorMessagge = "Value not valid: \n" + value + "\"";
                 return false;
             }
+        }
+    }
+
+    /**
+     * Check if the value, if is valid returns true.
+     * Check if the value si greater than minValue and smaller than maxValue.
+     *
+     * @param value Value to check.
+     * @return True if the value is valid.
+     */
+    public boolean isValid(int value) {
+        if (value < minValue) {
+            this.errorMessagge = "Too small value: " + value;
+            return false;
+        } else if (value > maxValue) {
+            this.errorMessagge = "Too large Value: " + value;
+            return false;
+        } else {
+            return true;
         }
     }
 }
