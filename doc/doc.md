@@ -326,6 +326,19 @@ ripetibile alle stesse condizioni.
 |**Procedura**     | - Go to “Cards manager” menu, in main page click “Import Profiles” link, Select the “1.2.001.xml” file, Import the Profile - Go to “Cards manager” menu, in main page click “Import Cards” link, Select the “1.2.001.txt” file, Delete the cards, Select the “1.2.001.txt” file, Import the cards |
 |**Risultati attesi** |Keys visible in the DB (OtaCardKey) but not visible in the GUI (Card details) |
 
+#### Test moduli
+|Test Case      | TC-001                               |
+|---------------|--------------------------------------|
+|**Nome**       |Verifica dei campi di input |
+|**Riferimento**|REQ-004 Sub-REQ-001                               |
+|**Descrizione**|Controllare che i campi di input controllino i valori correttamente |
+|**Prerequisiti**| La pagina di registrazione deve essere implementata |
+|**Procedura**     |1. inserire i propri dati nella pagina di registrazione. <br> 2. verificare che nessun campo venga sottolinato di rosso. |
+|**Risultati attesi** |Nessun dato deve essere sottolineato di rosso. |
+
+-
+
+
 
 ### Risultati test
 
