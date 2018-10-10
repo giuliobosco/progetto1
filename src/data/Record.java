@@ -29,6 +29,12 @@ import helper.validators.DateValidator;
 import helper.validators.EmailValidator;
 import helper.validators.NameValidator;
 
+/**
+ * Record for the CSV.
+ *
+ * @author giuliobosco
+ * @version 1.0
+ */
 public class Record {
     // ###################################################################################################### Attributes
     /**
