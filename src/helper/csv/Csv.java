@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.charset.Charset;
+import java.nio.file.Paths;
 import java.util.List;
 
 /**
@@ -79,6 +80,33 @@ public class Csv {
     public void addLines(String[] strings) {
         for (String string : strings) {
             this.addLine(string);
+        }
+    }
+
+    // ----------------------------------------------------------------------------------------------- Static Components
+
+    public static String[] getRecord() {
+        String[] record = new String[3];
+
+        record[0] = "1";
+        record[1] = "John";
+        record[2] = "Doe";
+
+        return record;
+    }
+
+    public static void main(String[] args) {
+        Path path = Paths.get("CsvTest.csv");
+        try {
+            Csv csv = new Csv(path, ';');
+
+            String[] record = getRecord();
+
+            csv.addLine(record);
+
+            csv.save();
+        } catch (IOException ioe) {
+
         }
     }
 }
