@@ -1,5 +1,7 @@
 package helper.csv;
 
+import helper.validators.NameValidator;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -31,10 +33,60 @@ public class Csv {
      */
     private char separator;
 
+    /**
+     * Header of the CSV file.
+     * Each Array element is an column title.
+     */
+    private String[] header;
+
     // ----------------------------------------------------------------------------------------------- Getters & Setters
 
+    /**
+     * Getter for the CSV.
+     *
+     * @return Content of the CSV.
+     */
     public List<String> getCsv() {
         return this.csv;
+    }
+
+    /**
+     * Setter for the Header of the Csv.
+     * Set the header only if the Csv is empty.
+     *
+     * @param header Header of the Csv. Each element of the Array is an column.
+     */
+    public void setHeader(String[] header) {
+        if (this.csv.size() != 0) {
+            return;
+        }
+
+        NameValidator headerValidator = new NameValidator(1, 20);
+
+        for (int i = 0; i < header.length; i++) {
+            if (!headerValidator.isValid(header[i])) {
+                return;
+            }
+        }
+
+        this.header = header;
+
+        String add = "";
+
+        for (String column : header) {
+            add += column + separator;
+        }
+
+        this.csv.add(add);
+    }
+
+    /**
+     * Getter for the Header of the Csv.
+     *
+     * @return Header of the CSV.
+     */
+    public String[] getHeader() {
+        return this.header;
     }
 
     // ---------------------------------------------------------------------------------------------------- Constructors
@@ -81,8 +133,12 @@ public class Csv {
      *
      * @param string Line to add. The full line.
      */
-    public void addLine(String string) {
-        csv.add(string);
+    public void addLine(String string) throws NoCsvHeaderException {
+        if (this.header == null) {
+            throw new NoCsvHeaderException("No CSV Header set.");
+        }
+
+        this.csv.add(string);
     }
 
     /**
@@ -91,7 +147,7 @@ public class Csv {
      *
      * @param strings Values of the line to add to the CSV.
      */
-    public void addLine(String[] strings) {
+    public void addLine(String[] strings) throws NoCsvHeaderException {
         String add = "";
 
         for (String string : strings) {
@@ -107,7 +163,7 @@ public class Csv {
      *
      * @param strings Lines to add to the csv.
      */
-    public void addLines(String[] strings) {
+    public void addLines(String[] strings) throws NoCsvHeaderException {
         for (String string : strings) {
             this.addLine(string);
         }
@@ -120,7 +176,7 @@ public class Csv {
      *
      * @return Test record.
      */
-    public static String[] getRecord() {
+    public static String[] getTestRecord() {
         String[] record = new String[3];
 
         record[0] = "1";
@@ -128,6 +184,15 @@ public class Csv {
         record[2] = "Doe";
 
         return record;
+    }
+
+    /**
+     * Get the Header for the test.
+     *
+     * @return Test Header.
+     */
+    public static String[] getTestHeader() {
+        return new String[] {"id", "name", "surname"};
     }
 
     /**
@@ -140,8 +205,9 @@ public class Csv {
         try {
             Csv writer = new Csv(path, ';');
 
-            String[] record = getRecord();
+            String[] record = getTestRecord();
 
+            writer.setHeader(getTestHeader());
             writer.addLine(record);
 
             writer.save();
@@ -151,6 +217,8 @@ public class Csv {
             System.out.println(reader.getCsv());
         } catch (IOException ioe) {
 
+        } catch (NoCsvHeaderException nche) {
+            System.out.println("the csv has no Header");
         }
     }
 }
