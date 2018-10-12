@@ -17,6 +17,10 @@ import java.util.List;
  * @version 1.0
  */
 public class Csv {
+    // ------------------------------------------------------------------------------------------------------- Constants
+
+    public static final char DFL_SEPARATOR = ',';
+
     // ------------------------------------------------------------------------------------------------------ Attributes
     /**
      * Path of the CSV file.
@@ -101,11 +105,12 @@ public class Csv {
     // ---------------------------------------------------------------------------------------------------- Constructors
 
     /**
-     * Constructor with the file path
+     * Constructor with the file path and the separator.
      *
      * @param filePath  Path of the CSV file.
      * @param separator CSV separator.
      * @throws IOException Error on the file system.
+     * @throws NoCsvHeaderException No Header in the CSV file find.
      */
     public Csv(Path filePath, char separator) throws IOException, NoCsvHeaderException {
         if (Files.exists(filePath) && !Files.notExists(filePath)) {
@@ -127,6 +132,17 @@ public class Csv {
             this.csv = Files.readAllLines(filePath);
         }
         this.separator = separator;
+    }
+
+    /**
+     * Constructor with the file path
+     *
+     * @param filePath Path of the CSV file.
+     * @throws IOException Error on the file System.
+     * @throws NoCsvHeaderException No Header in the CSV file find.
+     */
+    public Csv(Path filePath) throws IOException, NoCsvHeaderException {
+        this(filePath, DFL_SEPARATOR);
     }
 
     // ---------------------------------------------------------------------------------------------------- Help Methods
