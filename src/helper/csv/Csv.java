@@ -45,7 +45,6 @@ public class Csv {
             this.filePath = filePath;
 
             this.csv = Files.readAllLines(filePath);
-            this.separator = separator;
         } else {
             Files.createFile(filePath);
 
@@ -53,6 +52,7 @@ public class Csv {
 
             csv = Files.readAllLines(filePath);
         }
+        this.separator = separator;
     }
 
     // ---------------------------------------------------------------------------------------------------- Help Methods
