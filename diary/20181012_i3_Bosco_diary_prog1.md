@@ -9,8 +9,8 @@
 
 |Orario        |Lavoro svolto                 |
 |--------------|------------------------------|
-|13:15 - 14:00 |Implementato Classe Csv |
-|14:00 - 14:30 |Testato Classe Csv |
+|13:15 - 15:00 |Implementato Classe Csv |
+|15:00 - 15:15 |Testato Classe Csv |
 
 ##  Problemi riscontrati e soluzioni adottate
 ### Classe Csv
