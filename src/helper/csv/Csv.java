@@ -98,17 +98,24 @@ public class Csv {
      * @param separator CSV separator.
      * @throws IOException Error on the file system.
      */
-    public Csv(Path filePath, char separator) throws IOException {
+    public Csv(Path filePath, char separator) throws IOException, NoCsvHeaderException {
         if (Files.exists(filePath) && !Files.notExists(filePath)) {
             this.filePath = filePath;
 
             this.csv = Files.readAllLines(filePath);
+
+            if (this.csv.size() == 0) {
+                throw new NoCsvHeaderException("No Csv Header.");
+            }
+
+            String fullHeader = this.csv.get(0);
+            this.header = fullHeader.split(Character.toString(separator));
         } else {
             Files.createFile(filePath);
 
             this.filePath = filePath;
 
-            csv = Files.readAllLines(filePath);
+            this.csv = Files.readAllLines(filePath);
         }
         this.separator = separator;
     }
@@ -214,6 +221,10 @@ public class Csv {
 
             Csv reader = new Csv(path, ';');
 
+            for (int i = 0; i < reader.header.length; i++) {
+                System.out.print(reader.header[i] + ",");
+            }
+            System.out.println("\n");
             System.out.println(reader.getCsv());
         } catch (IOException ioe) {
 
