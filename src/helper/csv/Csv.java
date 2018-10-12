@@ -35,9 +35,10 @@ public class Csv {
 
     /**
      * Constructor with the file path
-     * @param filePath
-     * @param separator
-     * @throws IOException
+     *
+     * @param filePath  Path of the CSV file.
+     * @param separator CSV separator.
+     * @throws IOException Error on the file system.
      */
     public Csv(Path filePath, char separator) throws IOException {
         if (Files.exists(filePath) && !Files.notExists(filePath)) {
@@ -57,16 +58,33 @@ public class Csv {
     // ---------------------------------------------------------------------------------------------------- Help Methods
     // ------------------------------------------------------------------------------------------------ Generals Methods
 
+    /**
+     * Save on the file system.
+     *
+     * @throws IOException Error on the file system.
+     */
     public void save() throws IOException {
         if (Files.isWritable(filePath)) {
             Files.write(filePath, csv, Charset.forName("UTF-8"));
         }
     }
 
+    /**
+     * Add line to the CSV.
+     * Add the full line passed as parameter, not check the separator or integrity of the string.
+     *
+     * @param string Line to add. The full line.
+     */
     public void addLine(String string) {
         csv.add(string);
     }
 
+    /**
+     * Add line to the CSV.
+     * Add the values in the string array and insert them in the csv with the separator.
+     *
+     * @param strings Values of the line to add to the CSV.
+     */
     public void addLine(String[] strings) {
         String add = "";
 
@@ -77,6 +95,12 @@ public class Csv {
         this.addLine(add);
     }
 
+    /**
+     * Ad many lines to the CSV.
+     * Each row needs the full string.
+     *
+     * @param strings Lines to add to the csv.
+     */
     public void addLines(String[] strings) {
         for (String string : strings) {
             this.addLine(string);
@@ -85,6 +109,11 @@ public class Csv {
 
     // ----------------------------------------------------------------------------------------------- Static Components
 
+    /**
+     * Get test record.
+     *
+     * @return Test record.
+     */
     public static String[] getRecord() {
         String[] record = new String[3];
 
@@ -95,6 +124,11 @@ public class Csv {
         return record;
     }
 
+    /**
+     * Test method of the class.
+     *
+     * @param args Command line arguments.
+     */
     public static void main(String[] args) {
         Path path = Paths.get("CsvTest.csv");
         try {
