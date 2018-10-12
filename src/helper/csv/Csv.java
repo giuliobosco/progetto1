@@ -51,6 +51,15 @@ public class Csv {
     }
 
     /**
+     * Getter for the CSV separator.
+     *
+     * @return CSV Separator.
+     */
+    public char getSeparator() {
+        return this.separator;
+    }
+
+    /**
      * Setter for the Header of the Csv.
      * Set the header only if the Csv is empty.
      *
