@@ -8,6 +8,9 @@
 
 Manage Csv Files, create csv file, load csv file from disk and update the csv.
 
+## UML diagram 
+![CSV UML Diagram](img/Csv.png)
+
 ## Tests
 |Test Case      | TC-001                               |
 |---------------|--------------------------------------|
