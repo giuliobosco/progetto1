@@ -31,6 +31,12 @@ public class Csv {
      */
     private char separator;
 
+    // ----------------------------------------------------------------------------------------------- Getters & Setters
+
+    public List<String> getCsv() {
+        return this.csv;
+    }
+
     // ---------------------------------------------------------------------------------------------------- Constructors
 
     /**
@@ -132,13 +138,17 @@ public class Csv {
     public static void main(String[] args) {
         Path path = Paths.get("CsvTest.csv");
         try {
-            Csv csv = new Csv(path, ';');
+            Csv writer = new Csv(path, ';');
 
             String[] record = getRecord();
 
-            csv.addLine(record);
+            writer.addLine(record);
 
-            csv.save();
+            writer.save();
+
+            Csv reader = new Csv(path, ';');
+
+            System.out.println(reader.getCsv());
         } catch (IOException ioe) {
 
         }
