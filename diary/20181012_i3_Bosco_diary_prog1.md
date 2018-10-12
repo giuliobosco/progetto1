@@ -11,6 +11,7 @@
 |--------------|------------------------------|
 |13:15 - 15:00 |Implementato Classe Csv |
 |15:00 - 15:15 |Testato Classe Csv |
+|15:15 - 16:15 |Implementato Classe CsvToJson |
 
 ##  Problemi riscontrati e soluzioni adottate
 ### Classe Csv
@@ -20,6 +21,7 @@ Nel costruttore veniva settato il separatore solamente quando veniva aperto un f
 il problema viene risolto.
 
 ##  Punto della situazione rispetto alla pianificazione
-
+Rispetto alla pianificazione sono avanti, pero non ho ancora iniziato a sviluppare la parte grafica.
 
 ## Programma di massima per la prossima giornata di lavoro
+Continuare Classe CsvToJson
