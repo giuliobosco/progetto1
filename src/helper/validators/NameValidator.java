@@ -31,6 +31,11 @@ package helper.validators;
  */
 public class NameValidator extends Validator {
 
+    /**
+     * Constructor with minimum and maximum length.
+     * @param minLength Minimum Length.
+     * @param maxLength Maximum Length.
+     */
     public NameValidator(int minLength, int maxLength) {
         super(minLength, maxLength);
     }
