@@ -1,8 +1,8 @@
 
 
-# PROGETTO | Diario di lavoro - 10.10.2018
+# PROGETTO | Diario di lavoro - 12.10.2018
 ##### Giulio Bosco
-### Canobbio, 10.10.2018
+### Canobbio, 12.10.2018
 
 ## Lavori svolti
 
@@ -12,6 +12,7 @@
 |13:15 - 15:00 |Implementato Classe Csv |
 |15:00 - 15:15 |Testato Classe Csv |
 |15:15 - 16:15 |Implementato Classe CsvToJson |
+|16:15 - 16:30 |Diario & Documentazione|
 
 ##  Problemi riscontrati e soluzioni adottate
 ### Classe Csv
