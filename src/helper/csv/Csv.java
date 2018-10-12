@@ -1,12 +1,10 @@
 package helper.csv;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.charset.Charset;
 import java.util.List;
-import java.util.Properties;
 
 /**
  * Csv File Manager.
@@ -16,7 +14,7 @@ import java.util.Properties;
  * @version 1.0
  */
 public class Csv {
-    // ###################################################################################################### Attributes
+    // ------------------------------------------------------------------------------------------------------ Attributes
     /**
      * Path of the CSV file.
      */
@@ -28,21 +26,11 @@ public class Csv {
     private List<String> csv;
 
     /**
-     * Path of the properties file.
-     */
-    private Path propertiesPath;
-
-    /**
-     * Order of the fields for create new CSV file.
-     */
-    private Properties properties;
-
-    /**
      * Csv Separator.
      */
     private char separator;
 
-    // #################################################################################################### Constructors
+    // ---------------------------------------------------------------------------------------------------- Constructors
 
     /**
      * Constructor with the file path
@@ -65,27 +53,8 @@ public class Csv {
         }
     }
 
-    /**
-     * Constructor with the path of the CSV file and the properties file.
-     *
-     * @param filePath Path of the CSV file.
-     * @param propertiesPath Path of the properties file.
-     */
-    public Csv(Path filePath, char separator, Path propertiesPath) throws IOException {
-        this(filePath, separator);
-
-        if (Files.exists(propertiesPath) && !Files.notExists(propertiesPath)) {
-            this.propertiesPath = propertiesPath;
-
-            this.properties = new Properties();
-
-        } else {
-            throw new FileNotFoundException("Properties \"" + propertiesPath + "\" not found.");
-        }
-    }
-
-    // #################################################################################################### Help Methods
-    // ################################################################################################ Generals Methods
+    // ---------------------------------------------------------------------------------------------------- Help Methods
+    // ------------------------------------------------------------------------------------------------ Generals Methods
 
     public void save() throws IOException {
         if (Files.isWritable(filePath)) {
