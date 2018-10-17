@@ -26,6 +26,7 @@ package helper.csv;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -96,6 +97,8 @@ public class CsvToJson {
         this.csv = new Csv(filePath, separator);
 
         this.attributes = this.csv.getHeader();
+        this.elements = new ArrayList<>();
+        this.load();
     }
 
     /**
