@@ -167,10 +167,11 @@ public class CsvToJson {
             json += ",\n" + this.elements.get(i);
         }
 
-        return json + "]";
+        return json + "\n]";
     }
 
     // ----------------------------------------------------------------------------------------------- Static Components
+
     /**
      * Test method of the class.
      *
