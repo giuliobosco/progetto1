@@ -25,6 +25,7 @@ package helper.csv;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 /**
@@ -167,5 +168,32 @@ public class CsvToJson {
     }
 
     // ----------------------------------------------------------------------------------------------- Static Components
+    /**
+     * Test method of the class.
+     *
+     * @param args Command line arguments.
+     */
+    public static void main(String[] args) {
+        Path path = Paths.get("CsvTest.csv");
 
+        try {
+            //Csv.main(new String[0]);
+            Csv writer = new Csv(path, ';');
+
+            String[] record = Csv.getTestRecord();
+
+            writer.setHeader(Csv.getTestHeader());
+            writer.addLine(record);
+
+            writer.save();
+
+            CsvToJson csvToJson = new CsvToJson(path, ';');
+
+            System.out.println(csvToJson.getJson());
+        } catch (IOException ioe) {
+
+        } catch (NoCsvHeaderException nche) {
+            System.out.println("the csv has no Header");
+        }
+    }
 }
