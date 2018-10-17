@@ -109,7 +109,7 @@ public class Csv {
      *
      * @param filePath  Path of the CSV file.
      * @param separator CSV separator.
-     * @throws IOException Error on the file system.
+     * @throws IOException          Error on the file system.
      * @throws NoCsvHeaderException No Header in the CSV file find.
      */
     public Csv(Path filePath, char separator) throws IOException, NoCsvHeaderException {
@@ -138,7 +138,7 @@ public class Csv {
      * Constructor with the file path
      *
      * @param filePath Path of the CSV file.
-     * @throws IOException Error on the file System.
+     * @throws IOException          Error on the file System.
      * @throws NoCsvHeaderException No Header in the CSV file find.
      */
     public Csv(Path filePath) throws IOException, NoCsvHeaderException {
@@ -224,7 +224,7 @@ public class Csv {
      * @return Test Header.
      */
     public static String[] getTestHeader() {
-        return new String[] {"id", "name", "surname"};
+        return new String[]{"id", "name", "surname"};
     }
 
     /**

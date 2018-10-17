@@ -86,12 +86,12 @@ public class CsvToJson {
     /**
      * Constructor with file path.
      *
-     * @param filePath Csv File path.
+     * @param filePath  Csv File path.
      * @param separator CSV Separator.
-     * @throws IOException Error on the file system.
+     * @throws IOException          Error on the file system.
      * @throws NoCsvHeaderException No Csv Header find.
      */
-    public CsvToJson(Path filePath, char separator)  throws IOException, NoCsvHeaderException {
+    public CsvToJson(Path filePath, char separator) throws IOException, NoCsvHeaderException {
         this.csv = new Csv(filePath, separator);
 
         this.attributes = this.csv.getHeader();
@@ -101,7 +101,7 @@ public class CsvToJson {
      * Constructor with file path.
      *
      * @param filePath Csv File path.
-     * @throws IOException Error on the file system.
+     * @throws IOException          Error on the file system.
      * @throws NoCsvHeaderException No Csv Header find.
      */
     public CsvToJson(Path filePath) throws IOException, NoCsvHeaderException {
@@ -125,7 +125,7 @@ public class CsvToJson {
 
         String result = "{\n";
         for (int i = 0; i < cont.length; i++) {
-            result += "\"" + this.attributes[i] + "\":\"" + cont[i] +"\";\n";
+            result += "\"" + this.attributes[i] + "\":\"" + cont[i] + "\";\n";
         }
 
         return result + "}";
@@ -167,5 +167,5 @@ public class CsvToJson {
     }
 
     // ----------------------------------------------------------------------------------------------- Static Components
-    
+
 }
