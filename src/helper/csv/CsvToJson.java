@@ -87,13 +87,25 @@ public class CsvToJson {
      * Constructor with file path.
      *
      * @param filePath Csv File path.
+     * @param separator CSV Separator.
      * @throws IOException Error on the file system.
      * @throws NoCsvHeaderException No Csv Header find.
      */
-    public CsvToJson(Path filePath)  throws IOException, NoCsvHeaderException {
-        this.csv = new Csv(filePath);
+    public CsvToJson(Path filePath, char separator)  throws IOException, NoCsvHeaderException {
+        this.csv = new Csv(filePath, separator);
 
         this.attributes = this.csv.getHeader();
+    }
+
+    /**
+     * Constructor with file path.
+     *
+     * @param filePath Csv File path.
+     * @throws IOException Error on the file system.
+     * @throws NoCsvHeaderException No Csv Header find.
+     */
+    public CsvToJson(Path filePath) throws IOException, NoCsvHeaderException {
+        this(filePath, Csv.DFL_SEPARATOR);
     }
 
     // ---------------------------------------------------------------------------------------------------- Help Methods
