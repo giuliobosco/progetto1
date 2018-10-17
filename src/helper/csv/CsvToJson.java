@@ -145,6 +145,27 @@ public class CsvToJson {
         }
     }
 
+    /**
+     * Get the JSON file.
+     *
+     * @return JSON File.
+     */
+    public String getJson() {
+        String json = "[\n";
+
+        if (this.elements.size() > 0) {
+            json += this.elements.get(0);
+        } else {
+            return null;
+        }
+
+        for (int i = 1; i < this.elements.size(); i++) {
+            json += ",\n" + this.elements.get(i);
+        }
+
+        return json + "]";
+    }
+
     // ----------------------------------------------------------------------------------------------- Static Components
     
 }
