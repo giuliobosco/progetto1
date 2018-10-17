@@ -50,7 +50,7 @@ public class CsvToJson {
     /**
      * Elements of the Json File.
      */
-    private List<String[]> elements;
+    private List<String> elements;
 
     // ----------------------------------------------------------------------------------------------- Getters & Setters
 
@@ -77,7 +77,7 @@ public class CsvToJson {
      *
      * @return JSON Elements.
      */
-    public List<String[]> getElements() {
+    public List<String> getElements() {
         return this.elements;
     }
 
@@ -132,6 +132,19 @@ public class CsvToJson {
     }
 
     // ------------------------------------------------------------------------------------------------- General Methods
+
+    /**
+     * Load CSV into Elements
+     */
+    public void load() {
+        for (int i = 0; i < this.csv.getCsv().size(); i++) {
+            String element = this.csv.getCsv().get(i);
+            element = this.csvToJson(element);
+
+            this.elements.add(element);
+        }
+    }
+
     // ----------------------------------------------------------------------------------------------- Static Components
     
 }
