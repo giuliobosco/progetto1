@@ -1,4 +1,4 @@
-.np-all, .np-all * {
+.np-all, .np-all *, .np {
     padding: 0;
 }
 
