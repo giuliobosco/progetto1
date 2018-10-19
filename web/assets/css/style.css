@@ -47,3 +47,15 @@ textarea {
 	background-color: #00d;
 	color: #ffffff;
 }
+
+@media screen and (max-width: 768px) {
+	textarea {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 375px) {
+	.button {
+		width: 100%;
+	}
+}
