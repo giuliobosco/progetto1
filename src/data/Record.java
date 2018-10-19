@@ -311,7 +311,7 @@ public class Record {
      *
      * @return Data of the attributes.
      */
-    public String[] getDataString() {
+    public String[] getDataStrings() {
         String[] ret = new String[12];
 
         ret[0] = this.getData().toString();
@@ -336,7 +336,7 @@ public class Record {
      *
      * @return Names of the attributes.
      */
-    public String[] getAttributesString() {
+    public String[] getAttributesStrings() {
         String[] ret = new String[12];
 
         ret[0] = "data";
