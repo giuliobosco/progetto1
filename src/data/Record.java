@@ -321,7 +321,7 @@ public class Record {
      * @return Data of the attributes.
      */
     public String[] getDataStrings() {
-        String[] ret = new String[12];
+        String[] ret = new String[13];
 
         ret[0] = "\"" + this.getData().toString() + "\"";
         ret[1] = "\"" + this.getName() + "\"";
@@ -329,13 +329,13 @@ public class Record {
         ret[3] = "\"" + "" + "\"";//this.getBornDate().toString();
         ret[4] = "\"" + this.getAddress().getStreet() + "\"";
         ret[5] = "\"" + this.getAddress().getCivicNumberLetter() + "\"";
-        ret[7] = "\"" + this.getAddress().getCity() + "\"";
-        ret[6] = "\"" + this.getAddress().getNap() + "\"";
-        ret[7] = "\"" + Long.toString(this.getPhoneNumber()) + "\"";
-        ret[8] = "\"" + this.getEmail() + "\"";
-        ret[9] = "\"" + Character.toString(this.getMf()) + "\"";
-        ret[10] = "\"" + this.getHobby() + "\"";
-        ret[11] = "\"" + this.getWork() + "\"";
+        ret[6] = "\"" + this.getAddress().getCity() + "\"";
+        ret[7] = "\"" + this.getAddress().getNap() + "\"";
+        ret[8] = "\"" + Long.toString(this.getPhoneNumber()) + "\"";
+        ret[9] = "\"" + this.getEmail() + "\"";
+        ret[10] = "\"" + Character.toString(this.getMf()) + "\"";
+        ret[11] = "\"" + this.getHobby() + "\"";
+        ret[12] = "\"" + this.getWork() + "\"";
 
         return ret;
     }
@@ -346,7 +346,7 @@ public class Record {
      * @return Names of the attributes.
      */
     public String[] getAttributesStrings() {
-        String[] ret = new String[12];
+        String[] ret = new String[13];
 
         ret[0] = "\"data\"";
         ret[1] = "\"nome\"";
@@ -354,13 +354,13 @@ public class Record {
         ret[3] = "\"dataDiNascita\"";
         ret[4] = "\"via\"";
         ret[5] = "\"numeroCivico\"";
-        ret[7] = "\"città\"";
-        ret[6] = "\"nap\"";
-        ret[7] = "\"telefono\"";
-        ret[8] = "\"email\"";
-        ret[9] = "\"genere\"";
-        ret[10] = "\"hobby\"";
-        ret[11] = "\"professione\"";
+        ret[6] = "\"città\"";
+        ret[7] = "\"nap\"";
+        ret[8] = "\"telefono\"";
+        ret[9] = "\"email\"";
+        ret[10] = "\"genere\"";
+        ret[11] = "\"hobby\"";
+        ret[12] = "\"professione\"";
 
         return ret;
     }
