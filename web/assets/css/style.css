@@ -28,7 +28,8 @@
 }
 
 .user-input-wrp input:focus ~ .floating-label,
-.user-input-wrp input:not(:focus):valid ~ .floating-label {
+.user-input-wrp input:not(:focus):valid ~ .floating-label,
+.floating-label-top {
 	top: 0px;
 	left: 10px;
 	font-size: 13px;
