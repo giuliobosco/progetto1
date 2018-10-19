@@ -308,7 +308,8 @@ public class Record {
     /**
      * Getter for all the data.
      * Collect all the data of the record and return
-     * @return
+     *
+     * @return Data of the attributes.
      */
     public String[] getDataString() {
         String[] ret = new String[12];
@@ -326,6 +327,31 @@ public class Record {
         ret[9] = Character.toString(this.getMf());
         ret[10] = this.getHobby();
         ret[11] = this.getWork();
+
+        return ret;
+    }
+
+    /**
+     * Getter all the names of the attributes.
+     *
+     * @return Names of the attributes.
+     */
+    public String[] getAttributesString() {
+        String[] ret = new String[12];
+
+        ret[0] = "data";
+        ret[1] = "nome";
+        ret[2] = "cognome";
+        ret[3] = "dataDiNascita";
+        ret[4] = "via";
+        ret[5] = "numeroCivico";
+        ret[7] = "città";
+        ret[6] = "nap";
+        ret[7] = "telefono";
+        ret[8] = "email";
+        ret[9] = "genere";
+        ret[10] = "hobby";
+        ret[11] = "professione";
 
         return ret;
     }
