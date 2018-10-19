@@ -18,6 +18,10 @@
     padding-top: 30px;
 }
 
+.pt25 {
+    padding-top: 25px;
+}
+
 .pt20 {
     padding-top: 20px;
 }
@@ -94,6 +98,11 @@
     padding-right: 10px;
 }
 
+.ph5 {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
 .p15 {
     padding: 15px;
 }
@@ -166,6 +175,8 @@
     font-size: 0;
 }
 
+.m { display: none; }
+
 @media screen and (max-width: 768px) {
     .pt100d {
         padding-top: 0;
@@ -178,4 +189,8 @@
     .pr50d {
         padding-right: 0;
     }
+    
+    .m { display: block; }
+
+    .d { display: none; }
 }
