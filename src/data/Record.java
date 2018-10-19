@@ -23,7 +23,13 @@
  */
 package data;
 
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Date;
+
+import helper.csv.Csv;
+import helper.csv.NoCsvHeaderException;
 import helper.data.Address;
 import helper.validators.DateValidator;
 import helper.validators.EmailValidator;
@@ -65,7 +71,7 @@ public class Record {
     /**
      * Phone number of the record.
      */
-    private int phoneNumber;
+    private long phoneNumber;
 
     /**
      * Email of the record.
@@ -205,7 +211,7 @@ public class Record {
      *
      * @return Phone number of the record.
      */
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return this.phoneNumber;
     }
 
@@ -214,7 +220,7 @@ public class Record {
      *
      * @param phoneNumber Phone number of the record.
      */
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -299,6 +305,9 @@ public class Record {
      */
     public Record() {
         this.data = new Date();
+        nameValidator = new NameValidator(1,50);
+        emailValidator = new EmailValidator();
+        dateValidator = new DateValidator(new Date());
     }
 
     // #################################################################################################### Help Methods
@@ -314,19 +323,19 @@ public class Record {
     public String[] getDataStrings() {
         String[] ret = new String[12];
 
-        ret[0] = this.getData().toString();
-        ret[1] = this.getName();
-        ret[2] = this.getSurname();
-        ret[3] = this.getBornDate().toString();
-        ret[4] = this.getAddress().getStreet();
-        ret[5] = this.getAddress().getCivicNumberLetter();
-        ret[7] = this.getAddress().getCity();
-        ret[6] = this.getAddress().getNap();
-        ret[7] = Integer.toString(this.getPhoneNumber());
-        ret[8] = this.getEmail();
-        ret[9] = Character.toString(this.getMf());
-        ret[10] = this.getHobby();
-        ret[11] = this.getWork();
+        ret[0] = "\"" + this.getData().toString() + "\"";
+        ret[1] = "\"" + this.getName() + "\"";
+        ret[2] = "\"" + this.getSurname() + "\"";
+        ret[3] = "\"" + "" + "\"";//this.getBornDate().toString();
+        ret[4] = "\"" + this.getAddress().getStreet() + "\"";
+        ret[5] = "\"" + this.getAddress().getCivicNumberLetter() + "\"";
+        ret[7] = "\"" + this.getAddress().getCity() + "\"";
+        ret[6] = "\"" + this.getAddress().getNap() + "\"";
+        ret[7] = "\"" + Long.toString(this.getPhoneNumber()) + "\"";
+        ret[8] = "\"" + this.getEmail() + "\"";
+        ret[9] = "\"" + Character.toString(this.getMf()) + "\"";
+        ret[10] = "\"" + this.getHobby() + "\"";
+        ret[11] = "\"" + this.getWork() + "\"";
 
         return ret;
     }
@@ -339,20 +348,57 @@ public class Record {
     public String[] getAttributesStrings() {
         String[] ret = new String[12];
 
-        ret[0] = "data";
-        ret[1] = "nome";
-        ret[2] = "cognome";
-        ret[3] = "dataDiNascita";
-        ret[4] = "via";
-        ret[5] = "numeroCivico";
-        ret[7] = "città";
-        ret[6] = "nap";
-        ret[7] = "telefono";
-        ret[8] = "email";
-        ret[9] = "genere";
-        ret[10] = "hobby";
-        ret[11] = "professione";
+        ret[0] = "\"data\"";
+        ret[1] = "\"nome\"";
+        ret[2] = "\"cognome\"";
+        ret[3] = "\"dataDiNascita\"";
+        ret[4] = "\"via\"";
+        ret[5] = "\"numeroCivico\"";
+        ret[7] = "\"città\"";
+        ret[6] = "\"nap\"";
+        ret[7] = "\"telefono\"";
+        ret[8] = "\"email\"";
+        ret[9] = "\"genere\"";
+        ret[10] = "\"hobby\"";
+        ret[11] = "\"professione\"";
 
         return ret;
+    }
+
+    /**
+     * Main method of the class used to test the class.
+     *
+     * @param args Command Line arguments.
+     */
+    public static void main(String[] args) {
+        Record record = new Record();
+
+        record.setName("John");
+        record.setSurname("Doe");
+        record.setBornDate(new Date(2000,1,1));
+        Address recordAddress = new Address();
+        recordAddress.setStreet("Via Garibaldi");
+        recordAddress.setCivicNumberLetter("57");
+        recordAddress.setCity("milano");
+        recordAddress.setNap("20121");
+        record.setAddress(recordAddress);
+        record.setEmail("john.doe@example.com");
+        record.setMf('m');//record.setPhoneNumber(41796278810);
+        record.setHobby("Play Football");
+        record.setWork("Writer");
+
+        try {
+            Path path = Paths.get("Csv.txt");
+            Csv writer = new Csv(path, ';');
+            writer.setHeader(record.getAttributesStrings());
+
+            writer.addLine(record.getDataStrings());
+
+            writer.save();
+        } catch (IOException ioe) {
+            System.out.println("ioe");
+        } catch (NoCsvHeaderException nche) {
+            System.out.println("nche");
+        }
     }
 }
