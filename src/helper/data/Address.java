@@ -25,6 +25,7 @@ package helper.data;
 
 import helper.validators.NameValidator;
 import helper.validators.IntegerValidator;
+import helper.validators.UsernameValidator;
 
 /**
  * Address Class.
@@ -99,6 +100,11 @@ public class Address {
     private NameValidator countryCodeValidator;
 
     /**
+     * Letter Number Validator.
+     */
+    private UsernameValidator letterNumValidator;
+
+    /**
      * Getter for the Street of the address.
      *
      * @return Street of the address.
@@ -153,7 +159,7 @@ public class Address {
      * @param civicNumberLetter Letter of the civic number.
      */
     public void setCivicNumberLetter(String civicNumberLetter) {
-        if (streetValidator.isOfLetters(civicNumberLetter) && civicNumberLetter.length() == 1) {
+        if (letterNumValidator.isValid(civicNumberLetter)) {
             this.civicNumberLetter = civicNumberLetter;
         }
     }
@@ -193,7 +199,7 @@ public class Address {
      * @param nap Nap of the address.
      */
     public void setNap(String nap) {
-        if (napValidator.isValid(nap)) {
+        if (letterNumValidator.isValid(nap)) {
             this.nap = nap;
         }
     }
@@ -278,5 +284,6 @@ public class Address {
         this.napValidator = new NameValidator(4,8);
 
         this.integerValidator = new IntegerValidator(0,99999);
+        this.letterNumValidator = new UsernameValidator(1,6,true,true);
     }
 }
