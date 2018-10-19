@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.charset.Charset;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -77,7 +78,7 @@ public class Csv {
         NameValidator headerValidator = new NameValidator(1, 20);
 
         for (int i = 0; i < header.length; i++) {
-            if (!headerValidator.isValid(header[i])) {
+            if (headerValidator.isValid(header[i])) {
                 return;
             }
         }
@@ -129,7 +130,7 @@ public class Csv {
 
             this.filePath = filePath;
 
-            this.csv = Files.readAllLines(filePath);
+            this.csv = new ArrayList<>();
         }
         this.separator = separator;
     }
