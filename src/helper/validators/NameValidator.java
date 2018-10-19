@@ -47,7 +47,7 @@ public class NameValidator extends Validator {
      */
     public boolean isOfLetters(String value) {
         for (int i = 0; i < value.length(); i++) {
-            if (!(this.isLetter(value.charAt(i)) || this.isSpecialLetter(value.charAt(i)))) {
+            if (!(this.isLetter(value.charAt(i)) || this.isSpecialLetter(value.charAt(i)) || value.charAt(i) == ' ')) {
                 return false;
             }
         }
