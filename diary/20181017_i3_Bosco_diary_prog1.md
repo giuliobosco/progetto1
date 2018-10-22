@@ -23,7 +23,7 @@ I file CSV devono avere un header. L'output dei file JSON avrà questo stile.
 ]
 ```
 
-![CsvToJson UML Diagram](../architecture/structure/img/CsvToJson.png)
+![CsvToJson UML Diagram](../architecture/structure/img/CsvToJson.java.png)
 Per usare la classe bisogna creare un istanza dell'oggetto con la path del file CSV e il separatore. Poi richiamare 
 il metodo Csv.getJson() che ritorna una stringa con il contenuto del file JSON.
 
