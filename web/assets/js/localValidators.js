@@ -12,7 +12,6 @@
  *     <li>gender</li>
  *     <li>phone number</li>
  *     <li>nap</li>
- *     <li>nap</li>
  *     <li>birth date</li>
  *     <li>civic number</li>
  * </ul>
