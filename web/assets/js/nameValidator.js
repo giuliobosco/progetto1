@@ -2,7 +2,7 @@
  * Name Validator.
  *
  * @author giuliobosco
- * @verision 1.0
+ * @verision 1.1
  */
 
 /**
