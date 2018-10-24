@@ -2,7 +2,7 @@
  * Email Validator.
  *
  * @author giuliobosco
- * @version 1.0
+ * @version 1.1
  */
 
 /**
