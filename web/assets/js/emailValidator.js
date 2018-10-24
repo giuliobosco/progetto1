@@ -10,19 +10,7 @@
  *
  * @type {EmailValidator}
  */
-let emailValidator = class EmailValidator {
-
-	/**
-	 * Constructor.
-	 *
-	 * @param min {number} Min email length
-	 * @param max {number} Max email length.
-	 */
-	constructor(min, max) {
-		this.min = min;
-		this.max = max;
-	}
-
+let emailValidator = class EmailValidator extends Validator {
 	/**
 	 * Check if the email is valid.
 	 * @param email {string} Email to validate.
