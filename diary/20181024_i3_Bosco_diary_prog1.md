@@ -10,6 +10,7 @@
 |--------------|------------------------------|
 |13:15 - 14:15 |Implementazione: Validators in JavaScript |
 |14:15 - 14:20 |Implementazione: Diario |
+|14:20 - 14:45 |Implementazione: Insert.js |
 
 ### Implementazione: Validators in JavaScript
 ho implementato i seguenti validators:
@@ -31,10 +32,10 @@ Per creare i precedenti validators ho utilizzato StackOverflow per trovare le Re
 - link 5: [dates: https://stackoverflow.com/questions/7388001/javascript-regex-to-validate-date-format](https://stackoverflow.com/questions/7388001/javascript-regex-to-validate-date-format)
 
 ##  Problemi riscontrati e soluzioni adottate
-
-
+Il nel insert.js non esegue correttamente la validazioni dei dati.
 
 ##  Punto della situazione rispetto alla pianificazione
-
+Rispetto alla pianificazione sono abbastanza allineato,
 
 ## Programma di massima per la prossima giornata di lavoro
+Risolvere il problema della validazione front-end dei valori.
