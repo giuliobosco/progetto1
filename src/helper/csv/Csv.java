@@ -136,7 +136,7 @@ public class Csv {
     }
 
     /**
-     * Constructor with the file path
+     * Constructor with the file path.
      *
      * @param filePath Path of the CSV file.
      * @throws IOException          Error on the file System.
@@ -144,6 +144,29 @@ public class Csv {
      */
     public Csv(Path filePath) throws IOException, NoCsvHeaderException {
         this(filePath, DFL_SEPARATOR);
+    }
+
+    /**
+     * Constructor with the file path and the separator.
+     *
+     * @param path      Path of the CSV file.
+     * @param separator CSV separator.
+     * @throws IOException          Error on the file system.
+     * @throws NoCsvHeaderException No header in the CSV file find.
+     */
+    public Csv(String path, char separator) throws IOException, NoCsvHeaderException {
+        this(Paths.get(path), separator);
+    }
+
+    /**
+     * Constructor with the file path.
+     *
+     * @param path Path of the CSV file.
+     * @throws IOException          Error on the file system.
+     * @throws NoCsvHeaderException No header in the CSV file find.
+     */
+    public Csv(String path) throws IOException, NoCsvHeaderException {
+        this(Paths.get(path));
     }
 
     // ---------------------------------------------------------------------------------------------------- Help Methods
