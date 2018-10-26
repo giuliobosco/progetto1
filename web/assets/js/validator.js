@@ -2,15 +2,9 @@
  * General validator.
  *
  * @author giuliobosco
- * @version 1.0
+ * @version 1.1
  */
-
-/**
- * Main Validator.
- *
- * @type {Validator}
- */
-let validator = class Validator {
+class Validator {
 	/**
 	 * Constructor with minimum and maximum length.
 	 *

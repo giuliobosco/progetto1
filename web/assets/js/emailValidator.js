@@ -2,15 +2,9 @@
  * Email Validator.
  *
  * @author giuliobosco
- * @version 1.1
+ * @version 1.2
  */
-
-/**
- * Email validator.
- *
- * @type {EmailValidator}
- */
-let emailValidator = class EmailValidator extends Validator {
+class EmailValidator extends Validator {
 	/**
 	 * Check if the email is valid.
 	 * @param email {string} Email to validate.

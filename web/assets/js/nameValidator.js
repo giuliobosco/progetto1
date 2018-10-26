@@ -2,14 +2,9 @@
  * Name Validator.
  *
  * @author giuliobosco
- * @verision 1.1
+ * @version 1.2
  */
-
-/**
- * Name Validator.
- * @type {NameValidator}
- */
-let nameValidator = class NameValidator extends Validator {
+class NameValidator extends Validator {
 	/**
 	 * Validate email.
 	 *

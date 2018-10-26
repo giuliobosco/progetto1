@@ -1,12 +1,5 @@
 /**
  * Local Validator.
- *
- * @author giuliobosco
- * @version 1.0
- */
-
-/**
- * Local Validator.
  * Validate:
  * <ul>
  *     <li>gender</li>
@@ -15,9 +8,11 @@
  *     <li>birth date</li>
  *     <li>civic number</li>
  * </ul>
- * @type {LocalValidator}
+ *
+ * @author giuliobosco
+ * @version 1.1
  */
-let localValidators = class LocalValidator extends Validator {
+class LocalValidator extends Validator {
 
 	/**
 	 * Validate the gender.
