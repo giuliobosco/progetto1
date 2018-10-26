@@ -305,9 +305,10 @@ public class Record {
      */
     public Record() {
         this.data = new Date();
-        nameValidator = new NameValidator(1,50);
-        emailValidator = new EmailValidator();
-        dateValidator = new DateValidator(new Date());
+        this.address = new Address();
+        this.nameValidator = new NameValidator(1,50);
+        this.emailValidator = new EmailValidator();
+        this.dateValidator = new DateValidator(new Date());
     }
 
     // #################################################################################################### Help Methods
