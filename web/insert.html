@@ -19,7 +19,7 @@
 
 <div class="pt50"></div>
 
-<form class="container">
+<form class="container" method="post" action="Insert">
 	<div class="row">
 		<div class="col-md-6">
 			<div class="user-input-wrp">
@@ -43,7 +43,7 @@
 			<div class="col-xs-4">
 				<div class="user-input-wrp">
 					<br/>
-					<input type="text" class="inputText" name="day" required>
+					<input type="number" class="inputText" name="day" required>
 					<span class="floating-label">giorno<sup>*</sup></span>
 				</div>
 			</div>
@@ -69,7 +69,7 @@
 			<div class="col-xs-4">
 				<div class="user-input-wrp">
 					<br/>
-					<input type="text" class="inputText" name="year" required>
+					<input type="number" class="inputText" name="year" required>
 					<span class="floating-label">anno<sup>*</sup></span>
 				</div>
 			</div>
@@ -169,6 +169,15 @@
 </form>
 
 <div class="pt25 m"></div>
+
+<script src="lib/jquery/jquery.min.js"></script>
+
+<script src="assets/js/validator.js"></script>
+<script src="assets/js/emailValidator.js"></script>
+<script src="assets/js/localValidators.js"></script>
+<script src="assets/js/nameValidator.js"></script>
+
+<script src="assets/js/insert.js"></script>
 
 </body>
 </html>
