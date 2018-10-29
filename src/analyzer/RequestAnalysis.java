@@ -26,6 +26,9 @@ package analyzer;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * Analysis of the http request.
+ * Check if the parameters
+ *
  * @author giuliobosco
  * @version 1.1
  */
