@@ -34,6 +34,7 @@ import helper.data.Address;
 import helper.validators.DateValidator;
 import helper.validators.EmailValidator;
 import helper.validators.NameValidator;
+import helper.validators.NumberValidator;
 
 /**
  * Record for the CSV.
@@ -71,7 +72,7 @@ public class Record {
     /**
      * Phone number of the record.
      */
-    private long phoneNumber;
+    private String phoneNumber;
 
     /**
      * Email of the record.
@@ -107,6 +108,11 @@ public class Record {
      * Date validator.
      */
     private DateValidator dateValidator;
+
+    /**
+     * Number validator.
+     */
+    private NumberValidator numberValidator;
 
     // ################################################################################################ Getter & Setters
 
@@ -211,7 +217,7 @@ public class Record {
      *
      * @return Phone number of the record.
      */
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return this.phoneNumber;
     }
 
@@ -220,8 +226,10 @@ public class Record {
      *
      * @param phoneNumber Phone number of the record.
      */
-    public void setPhoneNumber(long phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhoneNumber(String phoneNumber) {
+        if (numberValidator.isValid(phoneNumber)) {
+            this.phoneNumber = phoneNumber;
+        }
     }
 
     /**
@@ -309,6 +317,7 @@ public class Record {
         this.nameValidator = new NameValidator(1,50);
         this.emailValidator = new EmailValidator();
         this.dateValidator = new DateValidator(new Date());
+        this.numberValidator = new NumberValidator(9, 13);
     }
 
     // #################################################################################################### Help Methods
@@ -332,7 +341,7 @@ public class Record {
         ret[5] = "\"" + this.getAddress().getCivicNumberLetter() + "\"";
         ret[6] = "\"" + this.getAddress().getCity() + "\"";
         ret[7] = "\"" + this.getAddress().getNap() + "\"";
-        ret[8] = "\"" + Long.toString(this.getPhoneNumber()) + "\"";
+        ret[8] = "\"" + this.getPhoneNumber() + "\"";
         ret[9] = "\"" + this.getEmail() + "\"";
         ret[10] = "\"" + Character.toString(this.getMf()) + "\"";
         ret[11] = "\"" + this.getHobby() + "\"";
