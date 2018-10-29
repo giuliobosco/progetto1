@@ -28,6 +28,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
 
+import analyzer.RequestAnalysis;
 import helper.csv.Csv;
 import helper.csv.NoCsvHeaderException;
 import helper.data.Address;
@@ -41,6 +42,33 @@ import helper.validators.*;
  */
 public class Record {
     // -------------------------------------------------------------------------------------------------------- Costants
+
+    /**
+     * Optionals attributes of the request.
+     */
+    public static final String[] REQUIRED_ATTRIBUTES = {
+            "name",
+            "surname",
+            "day",
+            "month",
+            "year",
+            "street",
+            "streetNumber",
+            "city",
+            "nap",
+            "email",
+            "number",
+            "gender"
+    };
+
+    /**
+     * Required attributes of the request.
+     */
+    public static final String[] OPTIONAL_ATTRIBUTES = {
+            "hobby",
+            "work"
+    };
+
     // ------------------------------------------------------------------------------------------------------ Attributes
     /**
      * Record date.
@@ -412,7 +440,7 @@ public class Record {
             throw new NotValidDataException("The inserted data is not valid.");
         }
     }
-    
+
     // ----------------------------------------------------------------------------------------------- Static Components
 
     /**
