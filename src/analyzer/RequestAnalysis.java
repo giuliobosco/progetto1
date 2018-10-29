@@ -133,7 +133,7 @@ public class RequestAnalysis {
             this.analysis[i] = request.getParameter(this.requiredAttributes[i]);
         }
 
-        status = 0;
+        status = ANALYSIS_FINE;
     }
 
     // ------------------------------------------------------------------------------------------------- General Methods
