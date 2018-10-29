@@ -1,8 +1,8 @@
 
 
-# PROGETTO1 | Diario di lavoro - 24.10.2018
+# PROGETTO1 | Diario di lavoro - 26.10.2018
 ##### Giulio Bosco
-### Canobbio, 24.10.2018
+### Canobbio, 26.10.2018
 
 ## Lavori svolti
 
