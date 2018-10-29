@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author giuliobosco
- * @version 1.0
+ * @version 1.1
  */
 public class RequestAnalysis {
     // -------------------------------------------------------------------------------------------------------- Costants
@@ -131,6 +131,10 @@ public class RequestAnalysis {
 
         for (int i = 0; i < this.requiredAttributes.length; i++) {
             this.analysis[i] = request.getParameter(this.requiredAttributes[i]);
+        }
+
+        for (int i = 0; i < this.optionalAttributes.length; i++) {
+            this.analysis[this.requiredAttributes.length + i] = request.getParameter(this.optionalAttributes[i]);
         }
 
         status = ANALYSIS_FINE;
