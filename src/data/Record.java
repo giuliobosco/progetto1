@@ -31,16 +31,13 @@ import java.util.Date;
 import helper.csv.Csv;
 import helper.csv.NoCsvHeaderException;
 import helper.data.Address;
-import helper.validators.DateValidator;
-import helper.validators.EmailValidator;
-import helper.validators.NameValidator;
-import helper.validators.NumberValidator;
+import helper.validators.*;
 
 /**
  * Record for the CSV.
  *
  * @author giuliobosco
- * @version 1.0
+ * @version 1.1
  */
 public class Record {
     // ###################################################################################################### Attributes
@@ -243,6 +240,7 @@ public class Record {
 
     /**
      * Setter for the Email of the record.
+     *
      * @param email Email of the record.
      */
     public void setEmail(String email) {
@@ -314,7 +312,7 @@ public class Record {
     public Record() {
         this.data = new Date();
         this.address = new Address();
-        this.nameValidator = new NameValidator(1,50);
+        this.nameValidator = new NameValidator(1, 50);
         this.emailValidator = new EmailValidator();
         this.dateValidator = new DateValidator(new Date());
         this.numberValidator = new NumberValidator(9, 13);
@@ -342,7 +340,7 @@ public class Record {
         ret[6] = "\"" + this.getAddress().getCity() + "\"";
         ret[7] = "\"" + this.getAddress().getNap() + "\"";
         ret[8] = "\"" + this.getPhoneNumber() + "\"";
-        ret[9] = "\"" + this.getEmail() + "\"";
+        ret[9] = "\"" + this.getEmail() + "\" ";
         ret[10] = "\"" + Character.toString(this.getMf()) + "\"";
         ret[11] = "\"" + this.getHobby() + "\"";
         ret[12] = "\"" + this.getWork() + "\"";
@@ -376,6 +374,45 @@ public class Record {
     }
 
     /**
+     * Set the all the data in one time.
+     * The data needs the following sequence.
+     * "name",
+     * "surname",
+     * "day",
+     * "month",
+     * "year",
+     * "street",
+     * "streetNumber",
+     * "city",
+     * "nap",
+     * "email",
+     * "number",
+     * "gender",
+     * "hobby", (optional)
+     * "work" (optional)
+     *
+     * @param data Data to insert in the object.
+     */
+    public void setData(String[] data) throws NotValidDataException {
+        if (data.length == 15) {
+            this.setName(data[0]);
+            this.setSurname(data[1]);
+            this.setData(new Date(Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4])));
+            this.getAddress().setStreet(data[5]);
+            this.getAddress().setCivicNumberLetter(data[6]);
+            this.getAddress().setCity(data[7]);
+            this.getAddress().setNap(data[9]);
+            this.setEmail(data[10]);
+            this.setPhoneNumber(data[11]);
+            this.setMf(data[12].charAt(0));
+            this.setHobby(data[13]);
+            this.setWork(data[14]);
+        } else {
+            throw new NotValidDataException("The inserted data is not valid.");
+        }
+    }
+
+    /**
      * Main method of the class used to test the class.
      *
      * @param args Command Line arguments.
@@ -385,7 +422,7 @@ public class Record {
 
         record.setName("John");
         record.setSurname("Doe");
-        record.setBornDate(new Date(2000,1,1));
+        record.setBornDate(new Date(2000, 1, 1));
         Address recordAddress = new Address();
         recordAddress.setStreet("Via Garibaldi");
         recordAddress.setCivicNumberLetter("57");
