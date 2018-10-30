@@ -28,6 +28,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpSession;
 
 import analyzer.RequestAnalysis;
 import data.Record;
@@ -52,11 +53,10 @@ public class InsertServlet extends HttpServlet {
         RequestAnalysis ra = new RequestAnalysis(Record.REQUIRED_ATTRIBUTES, Record.OPTIONAL_ATTRIBUTES, request);
 
         if (ra.getStatus() == RequestAnalysis.ANALYSIS_FINE) {
-            String[] analysis = ra.getAnalysis();
+            HttpSession session = ra.getSession();
 
-            for (int i = 0; i < analysis.length; i++) {
-                response.getOutputStream().println(analysis[i]);
-            }
+            String redirectURL = response.encodeRedirectURL("check.jsp");
+            response.sendRedirect(redirectURL);
         } else {
             String redirectURL = response.encodeRedirectURL("insert.html");
             response.sendRedirect(redirectURL);
