@@ -28,7 +28,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
 
-import analyzer.RequestAnalysis;
 import helper.csv.Csv;
 import helper.csv.NoCsvHeaderException;
 import helper.data.Address;
@@ -423,19 +422,19 @@ public class Record {
      * @param data Data to insert in the object.
      */
     public void setData(String[] data) throws NotValidDataException {
-        if (data.length == 15) {
+        if (data.length == 14) {
             this.setName(data[0]);
             this.setSurname(data[1]);
             this.setData(new Date(Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4])));
             this.getAddress().setStreet(data[5]);
             this.getAddress().setCivicNumberLetter(data[6]);
             this.getAddress().setCity(data[7]);
-            this.getAddress().setNap(data[9]);
-            this.setEmail(data[10]);
-            this.setPhoneNumber(data[11]);
-            this.setMf(data[12].charAt(0));
-            this.setHobby(data[13]);
-            this.setWork(data[14]);
+            this.getAddress().setNap(data[8]);
+            this.setEmail(data[9]);
+            this.setPhoneNumber(data[10]);
+            this.setMf(data[11].charAt(0));
+            this.setHobby(data[12]);
+            this.setWork(data[13]);
         } else {
             throw new NotValidDataException("The inserted data is not valid.");
         }
