@@ -28,7 +28,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * Analysis of the http request.
- * Check if the parameters
+ * Check if the request attribute are right.
  *
  * @author giuliobosco
  * @version 1.1
