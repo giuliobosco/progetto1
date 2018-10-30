@@ -23,6 +23,12 @@
  */
 package servlets;
 
+import analyzer.SessionAnalysis;
+import data.Record;
+import helper.csv.Csv;
+import helper.csv.NoCsvHeaderException;
+import helper.validators.NotValidDataException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,7 +54,26 @@ public class SaveServlet extends HttpServlet {
      * @throws IOException      Error on the I/O.
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        SessionAnalysis sa = new SessionAnalysis(
+                Record.REQUIRED_ATTRIBUTES,
+                Record.OPTIONAL_ATTRIBUTES,
+                request.getSession()
+        );
+        try {
+            if (sa.getStatus() == SessionAnalysis.ANALYSIS_FINE) {
+                Record record = new Record();
+                record.setData(sa.getAnalysis());
 
+                Csv writer = new Csv("Csv.csv", ';');
+                writer.setHeader(record.getAttributesStrings());
+                writer.addLine(record.getDataStrings());
+                writer.save();
+            }
+        } catch (NotValidDataException nvde) {
+
+        } catch (NoCsvHeaderException nche) {
+
+        }
     }
 
     /**
