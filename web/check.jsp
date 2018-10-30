@@ -32,7 +32,7 @@
 
 <div class="pt50"></div>
 
-<form class="container" method="post" action="Insert">
+<form class="container" method="post" action="Save">
 	<div class="row">
 		<div class="col-md-6">
 			<div class="user-input-wrp">

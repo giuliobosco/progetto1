@@ -11,4 +11,13 @@
 		<servlet-name>InsertServlet</servlet-name>
 		<url-pattern>/Insert</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SaveServlet</servlet-name>
+		<servlet-class>servlets.SaveServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SaveServlet</servlet-name>
+		<url-pattern>/Save</url-pattern>
+	</servlet-mapping>
 </web-app>
