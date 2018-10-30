@@ -24,6 +24,7 @@
 package analyzer;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * Analysis of the http request.
@@ -66,6 +67,11 @@ public class RequestAnalysis {
      * Result of the analysis.
      */
     private String[] analysis;
+
+    /**
+     * Result of the analysis in the session.
+     */
+    private HttpSession session;
 
     // ----------------------------------------------------------------------------------------------- Getters & Setters
 
@@ -110,7 +116,7 @@ public class RequestAnalysis {
         this.requiredAttributes = requiredAttributes;
         this.optionalAttributes = optionalAttributes;
 
-        this.analyze(request);
+        this.analyzeSession(request);
     }
 
     // ---------------------------------------------------------------------------------------------------- Help Methods
@@ -141,6 +147,25 @@ public class RequestAnalysis {
         }
 
         status = ANALYSIS_FINE;
+    }
+
+    /**
+     * Execute the analysis of the http request and write the result in the analysis and in the session.
+     *
+     * @param request Http Request to analyze.
+     */
+    public void analyzeSession(HttpServletRequest request) {
+        this.analyze(request);
+
+        HttpSession session = request.getSession();
+
+        for (int i = 0; i < this.requiredAttributes.length; i++) {
+            session.setAttribute(this.requiredAttributes[i], this.analysis[i]);
+        }
+
+        for (int i = 0; i < this.optionalAttributes.length; i++) {
+            session.setAttribute(this.optionalAttributes[i], this.analysis[this.requiredAttributes.length + i]);
+        }
     }
 
     // ------------------------------------------------------------------------------------------------- General Methods
