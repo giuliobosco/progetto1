@@ -69,7 +69,7 @@ public class RequestAnalysis {
     private String[] analysis;
 
     /**
-     * Result of the analysis in the session.
+     * Result of the analysis as session.
      */
     private HttpSession session;
 
@@ -85,12 +85,21 @@ public class RequestAnalysis {
     }
 
     /**
-     * Getter for the result fo the analysis.
+     * Getter for the result of the analysis.
      *
      * @return Result of the analysis.
      */
     public String[] getAnalysis() {
         return this.analysis;
+    }
+
+    /**
+     * Getter for the result of the analysis as http session.
+     *
+     * @return Result of the analysis as session.
+     */
+    public HttpSession getSession() {
+        return this.session;
     }
 
     // ---------------------------------------------------------------------------------------------------- Constructors
