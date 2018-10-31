@@ -40,7 +40,7 @@ import java.io.IOException;
  * Save the data servlet.
  *
  * @author giuliobosco
- * @version 1.1
+ * @version 1.2
  */
 @WebServlet(name = "SaveServlet")
 public class SaveServlet extends HttpServlet {
@@ -67,6 +67,9 @@ public class SaveServlet extends HttpServlet {
                 RecordManager rm = new RecordManager();
                 rm.addRecord(record);
                 System.out.println("s");
+
+                String redirectURL = response.encodeRedirectURL("read.html");
+                response.sendRedirect(redirectURL);
             }
         } catch (NotValidDataException nvde) {
             System.out.println("not valid data");
