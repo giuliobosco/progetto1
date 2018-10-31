@@ -33,7 +33,7 @@ import java.util.List;
  * Converter form Csv to Json.
  *
  * @author giuliobosco
- * @version 1.1
+ * @version 1.2
  */
 public class CsvToJson {
     // -------------------------------------------------------------------------------------------------------- Costants
@@ -170,6 +170,23 @@ public class CsvToJson {
         return json + "\n]";
     }
 
+    /**
+     * Get the last row of the csv in JSON.
+     *
+     * @return Last CSV row in JSON.
+     */
+    public String getLastJson() {
+        String json = "[\n";
+
+        if (this.elements.size() > 0) {
+            json += this.elements.get(this.elements.size() - 1);
+        } else {
+            return null;
+        }
+
+        return json + "\n]";
+    }
+
     // ----------------------------------------------------------------------------------------------- Static Components
 
     /**
@@ -194,6 +211,9 @@ public class CsvToJson {
             CsvToJson csvToJson = new CsvToJson(path, ';');
 
             System.out.println(csvToJson.getJson());
+
+            System.out.println("------------");
+            System.out.println(csvToJson.getLastJson());
         } catch (IOException ioe) {
 
         } catch (NoCsvHeaderException nche) {
