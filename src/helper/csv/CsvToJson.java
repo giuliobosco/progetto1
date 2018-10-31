@@ -33,7 +33,7 @@ import java.util.List;
  * Converter form Csv to Json.
  *
  * @author giuliobosco
- * @version 1.0
+ * @version 1.1
  */
 public class CsvToJson {
     // -------------------------------------------------------------------------------------------------------- Costants
@@ -157,13 +157,13 @@ public class CsvToJson {
     public String getJson() {
         String json = "[\n";
 
-        if (this.elements.size() > 0) {
-            json += this.elements.get(0);
+        if (this.elements.size() > 1) {
+            json += this.elements.get(1);
         } else {
             return null;
         }
 
-        for (int i = 1; i < this.elements.size(); i++) {
+        for (int i = 2; i < this.elements.size(); i++) {
             json += ",\n" + this.elements.get(i);
         }
 
