@@ -30,7 +30,7 @@ app.controller('LastCtrl', ['$scope', '$http', function ($scope, $http) {
 }]);
 
 app.controller('TodayCtrl', ['$scope', '$http', function ($scope, $http) {
-	$http.get('assets/data/today.json')
+	$http.get('assets/data/today.jsp')
 		.then(function (response) {
 			let data = response.data;
 
