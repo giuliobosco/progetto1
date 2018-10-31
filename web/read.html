@@ -31,20 +31,22 @@
 	<div id="last" class="tabcontent active" ng-controller="LastCtrl">
 		<h3>Ultima iscrizione</h3>
 		<div ng-repeat="lastSub in lastSubs">
-			<p>
-				iscritto: {{lastSub.name}} {{lastSub.surname}}<br>
+			<div class="col-md-6">
+				iscritto: <b>{{lastSub.name}} {{lastSub.surname}}</b><br>
 				nato il: {{lastSub.bornDate}}<br>
 				<br>
 				indirizzo:<br>
 				{{lastSub.street}} {{lastSub.civicNumber}}<br>
 				{{lastSub.city}} {{lastSub.nap}}<br>
-				<br>
+			</div>
+			<div class="col-md-6">
 				phone: {{lastSub.phone}}<br>
 				email: {{lastSub.email}}<br>
-				<br>
+				<br><br>
 				hobby: {{lastSub.hobby}}<br>
 				work: {{lastSub.work}}
-			</p>
+			</div>
+			<div class="clearfix"></div>
 		</div>
 	</div>
 	
@@ -53,7 +55,7 @@
 		<div ng-repeat="todaySub in todaySubs">
 			<div class="card col-md-4 pt10  pb10" onclick="toggleHid(this)">
 				<div class="card-head col-xs-12">
-					{{todaySub.name}} {{todaySub.surname}} - {{todaySub.bornDate}} <span class="pull-right"><i class="fa fa-angle-down"></i> </span>
+					<b>{{todaySub.name}} {{todaySub.surname}}</b> - {{todaySub.bornDate}} <span class="pull-right"><i class="fa fa-angle-down"></i> </span>
 				</div>
 				<div class="clearfix"></div>
 				<div class="hid">
@@ -85,7 +87,7 @@
 		<div ng-repeat="allSub in allSubs">
 			<div class="card col-md-4 pt10  pb10" onclick="toggleHid(this)">
 				<div class="card-head col-xs-12">
-					{{allSub.name}} {{allSub.surname}} - {{allSub.bornDate}} <span class="pull-right"><i class="fa fa-angle-down"></i> </span>
+					<b>{{allSub.name}} {{allSub.surname}}</b> - {{allSub.bornDate}} <span class="pull-right"><i class="fa fa-angle-down"></i> </span>
 				</div>
 				<div class="clearfix"></div>
 				<div class="hid">
