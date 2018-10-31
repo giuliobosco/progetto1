@@ -26,6 +26,7 @@ package data;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Calendar;
 import java.util.Date;
 
 import helper.csv.Csv;
@@ -72,7 +73,7 @@ public class Record {
     /**
      * Record date.
      */
-    private Date data;
+    private Date date;
 
     /**
      * Name of the record.
@@ -146,17 +147,17 @@ public class Record {
      *
      * @return Record date.
      */
-    private Date getData() {
-        return data;
+    private Date getDate() {
+        return date;
     }
 
     /**
      * Setter for the Record date.
      *
-     * @param data Record date.
+     * @param date Record date.
      */
-    public void setData(Date data) {
-        this.data = data;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     /**
@@ -205,7 +206,7 @@ public class Record {
      * @return Born date of the record.
      */
     public Date getBornDate() {
-        return bornDate;
+        return this.bornDate;
     }
 
     /**
@@ -214,9 +215,7 @@ public class Record {
      * @param bornDate Born date of the record.
      */
     public void setBornDate(Date bornDate) {
-        if (dateValidator.isValid(bornDate)) {
-            this.bornDate = bornDate;
-        }
+        this.bornDate = bornDate;
     }
 
     /**
@@ -338,7 +337,6 @@ public class Record {
      * Initialize the date attribute with the actual time.
      */
     public Record() {
-        this.data = new Date();
         this.address = new Address();
         this.nameValidator = new NameValidator(1, 50);
         this.emailValidator = new EmailValidator();
@@ -359,10 +357,16 @@ public class Record {
     public String[] getDataStrings() {
         String[] ret = new String[13];
 
-        ret[0] = "\"" + this.getData().toString() + "\"";
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(this.getBornDate());
+        String bornDate = calendar.get(Calendar.DAY_OF_MONTH) + "/"
+                + (calendar.get(Calendar.MONTH) + 1) + "/"
+                + calendar.get(Calendar.YEAR);
+
+        ret[0] = "\"" + this.getDate().toString() + "\"";
         ret[1] = "\"" + this.getName() + "\"";
         ret[2] = "\"" + this.getSurname() + "\"";
-        ret[3] = "\"" + "" + "\"";//this.getBornDate().toString();
+        ret[3] = "\"" + bornDate + "\"";
         ret[4] = "\"" + this.getAddress().getStreet() + "\"";
         ret[5] = "\"" + this.getAddress().getCivicNumberLetter() + "\"";
         ret[6] = "\"" + this.getAddress().getCity() + "\"";
@@ -423,9 +427,15 @@ public class Record {
      */
     public void setData(String[] data) throws NotValidDataException {
         if (data.length == 14) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(data[2]));
+            calendar.set(Calendar.MONTH, Integer.parseInt(data[3]) - 1);
+            calendar.set(Calendar.YEAR, Integer.parseInt(data[4]));
+
+            this.setDate(new Date());
             this.setName(data[0]);
             this.setSurname(data[1]);
-            this.setData(new Date(Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4])));
+            this.setBornDate(calendar.getTime());
             this.getAddress().setStreet(data[5]);
             this.getAddress().setCivicNumberLetter(data[6]);
             this.getAddress().setCity(data[7]);
