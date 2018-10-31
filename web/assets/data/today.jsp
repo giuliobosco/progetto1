@@ -3,13 +3,13 @@
 <%@ page import="helper.csv.NoCsvHeaderException" %>
 <%
     RecordManager rm = new RecordManager();
-    String record = "Error";
+    String records = "Error";
     try {
-        record = rm.getDailyRecords();
+        records = rm.getDailyRecords();
     } catch (IOException ioe) {
 
     } catch (NoCsvHeaderException nche) {
 
     }
 %>
-<%=record%>
+<%=records%>
