@@ -66,7 +66,6 @@ public class SaveServlet extends HttpServlet {
 
                 RecordManager rm = new RecordManager();
                 rm.addRecord(record);
-                System.out.println("s");
 
                 String redirectURL = response.encodeRedirectURL("read.html");
                 response.sendRedirect(redirectURL);
