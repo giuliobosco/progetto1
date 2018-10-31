@@ -75,14 +75,6 @@ public class Csv {
             return;
         }
 
-        NameValidator headerValidator = new NameValidator(1, 20);
-
-        for (int i = 0; i < header.length; i++) {
-            if (headerValidator.isValid(header[i])) {
-                return;
-            }
-        }
-
         this.header = header;
 
         String add = "";
