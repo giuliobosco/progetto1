@@ -36,7 +36,7 @@ import java.util.Date;
 
 /**
  * @author giuliobosco
- * @version 1.0
+ * @version 1.1
  */
 public class RecordManager {
     // -------------------------------------------------------------------------------------------------------- Costants
