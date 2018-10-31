@@ -37,3 +37,12 @@ app.controller('TodayCtrl', ['$scope', '$http', function ($scope, $http) {
 			$scope.todaySubs = data;
 		})
 }]);
+
+app.controller('AllCtrl', ['$scope', '$http', function ($scope, $http) {
+	$http.get('assets/data/all.json')
+		.then(function (response) {
+			let data = response.data;
+
+			$scope.allSubs = data;
+		})
+}]);

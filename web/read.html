@@ -80,8 +80,36 @@
 		</div>
 	</div>
 	
-	<div id="all" class="tabcontent">
-		<h3>Tutte le iscrizioni</h3>
+	<div id="all" class="tabcontent" ng-controller="AllCtrl">
+		<h3>Iscrizioni di oggi</h3>
+		<div ng-repeat="allSub in allSubs">
+			<div class="card col-md-4 pt10  pb10" onclick="toggleHid(this)">
+				<div class="card-head col-xs-12">
+					{{allSub.name}} {{allSub.surname}} - {{allSub.bornDate}} <span class="pull-right"><i class="fa fa-angle-down"></i> </span>
+				</div>
+				<div class="clearfix"></div>
+				<div class="hid">
+					<div class="col-xs-6">
+						<br>
+						indirizzo:<br>
+						{{allSub.street}} {{allSub.civicNumber}}<br>
+						{{allSub.city}} {{allSub.nap}}<br>
+						<br>
+					
+					</div>
+					<div class="col-xs-6">
+						phone: {{allSub.phone}}<br>
+						email: {{allSub.email}}<br>
+						<br>
+						hobby: {{allSub.hobby}}<br>
+						work: {{allSub.work}}
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="pt10"></div>
+		</div>
 	</div>
 </div>
 
