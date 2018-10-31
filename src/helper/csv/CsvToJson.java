@@ -128,11 +128,13 @@ public class CsvToJson {
         }
 
         String result = "{\n";
-        for (int i = 0; i < cont.length; i++) {
-            result += "\"" + this.attributes[i] + "\":\"" + cont[i] + "\";\n";
+        for (int i = 0; i < cont.length - 1; i++) {
+            result +=  this.attributes[i] + ":" + cont[i] + ",\n";
         }
 
-        return result + "}";
+        result += this.attributes[cont.length - 1] + ":" + cont[cont.length - 1] + "\n}";
+
+        return result;
     }
 
     // ------------------------------------------------------------------------------------------------- General Methods
