@@ -20,7 +20,7 @@ function toggleHid(obj) {
 let app = angular.module('ReadApp',[]);
 
 app.controller('LastCtrl', ['$scope', '$http', function ($scope, $http) {
-	$http.get('assets/data/last.json')
+	$http.get('assets/data/last.jsp')
 		.then(function (response) {
 
 			let data = response.data;

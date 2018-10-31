@@ -32,19 +32,19 @@
 		<h3>Ultima iscrizione</h3>
 		<div ng-repeat="lastSub in lastSubs">
 			<div class="col-md-6">
-				iscritto: <b>{{lastSub.name}} {{lastSub.surname}}</b><br>
-				nato il: {{lastSub.bornDate}}<br>
+				iscritto: <b>{{lastSub.nome}} {{lastSub.cognome}}</b><br>
+				nato il: {{lastSub.dataDiNascita}}<br>
 				<br>
 				indirizzo:<br>
-				{{lastSub.street}} {{lastSub.civicNumber}}<br>
-				{{lastSub.city}} {{lastSub.nap}}<br>
+				{{lastSub.via}} {{lastSub.numeroCivico}}<br>
+				{{lastSub.citta}} {{lastSub.nap}}<br>
 			</div>
 			<div class="col-md-6">
-				phone: {{lastSub.phone}}<br>
+				phone: {{lastSub.telefono}}<br>
 				email: {{lastSub.email}}<br>
 				<br><br>
 				hobby: {{lastSub.hobby}}<br>
-				work: {{lastSub.work}}
+				work: {{lastSub.professione}}
 			</div>
 			<div class="clearfix"></div>
 		</div>
@@ -55,24 +55,24 @@
 		<div ng-repeat="todaySub in todaySubs">
 			<div class="card col-md-4 pt10  pb10" onclick="toggleHid(this)">
 				<div class="card-head col-xs-12">
-					<b>{{todaySub.name}} {{todaySub.surname}}</b> - {{todaySub.bornDate}} <span class="pull-right"><i class="fa fa-angle-down"></i> </span>
+					<b>{{todaySub.nome}} {{todaySub.cognome}}</b> - {{todaySub.dataDiNascita}} <span class="pull-right"><i class="fa fa-angle-down"></i> </span>
 				</div>
 				<div class="clearfix"></div>
 				<div class="hid">
 					<div class="col-xs-6">
 						<br>
 						indirizzo:<br>
-						{{todaySub.street}} {{todaySub.civicNumber}}<br>
-						{{todaySub.city}} {{todaySub.nap}}<br>
+						{{todaySub.via}} {{todaySub.numeroCivico}}<br>
+						{{todaySub.citta}} {{todaySub.nap}}<br>
 						<br>
 						
 					</div>
 					<div class="col-xs-6">
-						phone: {{todaySub.phone}}<br>
+						phone: {{todaySub.telefono}}<br>
 						email: {{todaySub.email}}<br>
 						<br>
 						hobby: {{todaySub.hobby}}<br>
-						work: {{todaySub.work}}
+						work: {{todaySub.professione}}
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -87,24 +87,24 @@
 		<div ng-repeat="allSub in allSubs">
 			<div class="card col-md-4 pt10  pb10" onclick="toggleHid(this)">
 				<div class="card-head col-xs-12">
-					<b>{{allSub.name}} {{allSub.surname}}</b> - {{allSub.bornDate}} <span class="pull-right"><i class="fa fa-angle-down"></i> </span>
+					<b>{{allSub.nome}} {{allSub.cognome}}</b> - {{allSub.dataDiNascita}} <span class="pull-right"><i class="fa fa-angle-down"></i> </span>
 				</div>
 				<div class="clearfix"></div>
 				<div class="hid">
 					<div class="col-xs-6">
 						<br>
 						indirizzo:<br>
-						{{allSub.street}} {{allSub.civicNumber}}<br>
-						{{allSub.city}} {{allSub.nap}}<br>
+						{{allSub.via}} {{allSub.civicNumber}}<br>
+						{{allSub.citta}} {{allSub.nap}}<br>
 						<br>
 					
 					</div>
 					<div class="col-xs-6">
-						phone: {{allSub.phone}}<br>
+						phone: {{allSub.telefono}}<br>
 						email: {{allSub.email}}<br>
 						<br>
 						hobby: {{allSub.hobby}}<br>
-						work: {{allSub.work}}
+						work: {{allSub.professione}}
 					</div>
 					<div class="clearfix"></div>
 				</div>
