@@ -25,7 +25,7 @@ package servlets;
 
 import analyzer.SessionAnalysis;
 import data.Record;
-import helper.csv.Csv;
+import data.RecordManager;
 import helper.csv.NoCsvHeaderException;
 import helper.validators.NotValidDataException;
 
@@ -40,7 +40,7 @@ import java.io.IOException;
  * Save the data servlet.
  *
  * @author giuliobosco
- * @version 1.0
+ * @version 1.1
  */
 @WebServlet(name = "SaveServlet")
 public class SaveServlet extends HttpServlet {
@@ -64,15 +64,16 @@ public class SaveServlet extends HttpServlet {
                 Record record = new Record();
                 record.setData(sa.getAnalysis());
 
-                Csv writer = new Csv("Csv.csv", ';');
-                writer.setHeader(record.getAttributesStrings());
-                writer.addLine(record.getDataStrings());
-                writer.save();
+                RecordManager rm = new RecordManager();
+                rm.addRecord(record);
+                System.out.println("s");
             }
         } catch (NotValidDataException nvde) {
-
+            System.out.println("not valid data");
         } catch (NoCsvHeaderException nche) {
-
+            System.out.println("nche");
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
         }
     }
 
