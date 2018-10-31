@@ -14,7 +14,7 @@ function openCity(evt, cityName) {
 
 let app = angular.module('ReadApp',[]);
 
-app.controller('LastController', ['$scope', '$http', function ($scope, $http) {
+app.controller('LastCtrl', ['$scope', '$http', function ($scope, $http) {
 	$http.get('assets/data/last.json')
 		.then(function (response) {
 
