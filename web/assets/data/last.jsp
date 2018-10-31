@@ -2,6 +2,14 @@
 <%@ page import="java.io.IOException" %>
 <%@ page import="helper.csv.NoCsvHeaderException" %>
 <%
+    /*
+     * Last subscription in json.
+     *
+     * @author giuliobosco
+     * @version 1.0
+     */
+%>
+<%
     RecordManager rm = new RecordManager();
     String record = "Error";
     try {
