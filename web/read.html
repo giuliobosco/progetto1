@@ -8,14 +8,13 @@
 	<link rel="stylesheet" type="text/css" href="lib/css/help.css">
 	<link rel="stylesheet" type="text/css" href="lib/fonts/font-awesome/css/font-awesome.css">
 	
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/read.css">
 	
 	<script src="lib/angularJS/angular.min.js"></script>
 	
 	<title>Read Data</title>
 </head>
-<body>
+<body ng-app="ReadApp">
 <h1 class="text-center">Sport Club<span class="d"> - Insert Your Data</span></h1>
 <h2 class="text-center m">Read data</h2>
 
@@ -23,21 +22,37 @@
 
 <div class="container">
 	<div class="tab">
-		<button class="tablinks active col-md-4" onclick="openCity(event, 'last')">Last subscription</button>
-		<button class="tablinks col-md-4" onclick="openCity(event, 'today')">Today's subscriptions</button>
-		<button class="tablinks col-md-4" onclick="openCity(event, 'all')">All the subscriptions</button>
+		<button class="tablinks active col-md-4 col-sm-4" onclick="openCity(event, 'last')">Ultima iscrizione</button>
+		<button class="tablinks col-md-4 col-sm-4" onclick="openCity(event, 'today')">Iscrizioni di oggi</button>
+		<button class="tablinks col-md-4 col-sm-4" onclick="openCity(event, 'all')">tutte le iscrizioni</button>
 	</div>
 	
-	<div id="last" class="tabcontent active">
-		<h3>Last subscription</h3>
+	<div id="last" class="tabcontent active" ng-controller="LastController">
+		<h3>Ultima iscrizione</h3>
+		<div ng-repeat="lastSub in lastSubs">
+			<p>
+				iscritto: {{lastSub.name}} {{lastSub.surname}}<br>
+				nato il: {{lastSub.bornDate}}<br>
+				<br>
+				indirizzo:<br>
+				{{lastSub.street}} {{lastSub.civicNumber}}<br>
+				{{lastSub.city}} {{lastSub.nap}}<br>
+				<br>
+				phone: {{lastSub.phone}}<br>
+				email: {{lastSub.email}}<br>
+				<br>
+				hobby: {{lastSub.hobby}}<br>
+				work: {{lastSub.work}}
+			</p>
+		</div>
 	</div>
 	
 	<div id="today" class="tabcontent">
-		<h3>Today's subscriptions</h3>
+		<h3>Iscrizioni di oggi</h3>
 	</div>
 	
 	<div id="all" class="tabcontent">
-		<h3>All the subscriptions</h3>
+		<h3>Tutte le iscrizioni</h3>
 	</div>
 </div>
 

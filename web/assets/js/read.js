@@ -1,5 +1,5 @@
 function openCity(evt, cityName) {
-	var i, tabcontent, tablinks;
+	let i, tabcontent, tablinks;
 	tabcontent = document.getElementsByClassName("tabcontent");
 	for (i = 0; i < tabcontent.length; i++) {
 		tabcontent[i].style.display = "none";
@@ -11,3 +11,16 @@ function openCity(evt, cityName) {
 	document.getElementById(cityName).style.display = "block";
 	evt.currentTarget.className += " active";
 }
+
+let app = angular.module('ReadApp',[]);
+
+app.controller('LastController', ['$scope', '$http', function ($scope, $http) {
+	$http.get('assets/data/last.json')
+		.then(function (response) {
+
+			let data = response.data;
+
+			$scope.lastSubs = data;
+			console.log(data);
+		});
+}]);
