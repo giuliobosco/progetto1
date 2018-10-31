@@ -390,7 +390,7 @@ public class Record {
         ret[3] = "\"dataDiNascita\"";
         ret[4] = "\"via\"";
         ret[5] = "\"numeroCivico\"";
-        ret[6] = "\"città\"";
+        ret[6] = "\"citta\"";
         ret[7] = "\"nap\"";
         ret[8] = "\"telefono\"";
         ret[9] = "\"email\"";
