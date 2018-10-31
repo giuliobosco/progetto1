@@ -12,6 +12,11 @@ function openCity(evt, cityName) {
 	evt.currentTarget.className += " active";
 }
 
+function toggleHid(obj) {
+	$(obj).children('.card-head').children('span').children('i').toggleClass('fa-angle-down fa-angle-up');
+	$(obj).children('.hid').slideToggle();
+}
+
 let app = angular.module('ReadApp',[]);
 
 app.controller('LastCtrl', ['$scope', '$http', function ($scope, $http) {
@@ -21,6 +26,14 @@ app.controller('LastCtrl', ['$scope', '$http', function ($scope, $http) {
 			let data = response.data;
 
 			$scope.lastSubs = data;
-			console.log(data);
 		});
+}]);
+
+app.controller('TodayCtrl', ['$scope', '$http', function ($scope, $http) {
+	$http.get('assets/data/today.json')
+		.then(function (response) {
+			let data = response.data;
+
+			$scope.todaySubs = data;
+		})
 }]);
