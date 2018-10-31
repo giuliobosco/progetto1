@@ -39,7 +39,7 @@ app.controller('TodayCtrl', ['$scope', '$http', function ($scope, $http) {
 }]);
 
 app.controller('AllCtrl', ['$scope', '$http', function ($scope, $http) {
-	$http.get('assets/data/all.json')
+	$http.get('assets/data/all.jsp')
 		.then(function (response) {
 			let data = response.data;
 
