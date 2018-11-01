@@ -27,7 +27,7 @@ package helper.validators;
  * Validator for validate email address.
  *
  * @author giuliobosco
- * @version 1.0
+ * @version 1.1
  */
 public class EmailValidator extends Validator {
 
@@ -65,6 +65,7 @@ public class EmailValidator extends Validator {
 
     /**
      * Email Validator.
+     *
      * @param value Email Address to validate.
      * @return True if it can be an email address, else false.
      */
@@ -89,5 +90,17 @@ public class EmailValidator extends Validator {
         }
 
         return true;
+    }
+
+    /**
+     * Email validator.
+     *
+     * @param value Email address to validate.
+     * @throws NotValidDataException The email address is not valid.
+     */
+    public void check(String value) throws NotValidDataException {
+        if (!this.isValid(value)) {
+            throw new NotValidDataException(this.errorMessagge);
+        }
     }
 }
