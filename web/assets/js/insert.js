@@ -98,8 +98,7 @@ function toggleSubmit() {
 		email === true &&
 		number === true &&
 		gender === true) {
-		$("input[type='submit']").attr('enabled', 'enabled').css('background-color', '#00d');
-		console.log("en");
+		$("input[type='submit']").removeAttr('disabled').css('background-color', '#00d');
 	} else {
 		$("input[type='submit']").attr('disabled', 'disabled').css('background-color', 'rgba(0,0,117,0.75)');
 	}
