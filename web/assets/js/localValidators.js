@@ -10,7 +10,7 @@
  * </ul>
  *
  * @author giuliobosco
- * @version 1.1
+ * @version 1.3
  */
 class LocalValidator extends Validator {
 
@@ -20,7 +20,7 @@ class LocalValidator extends Validator {
 	 * @param gender {string} Gender to validate.
 	 * @returns {boolean} Result of the validation.
 	 */
-	gender(gender) {
+	static gender(gender) {
 		if (gender.toLowerCase() == "m" || gender.toLowerCase() == "f") {
 			return true;
 		} else {
@@ -34,7 +34,7 @@ class LocalValidator extends Validator {
 	 * @param phone {string} Number to validate.
 	 * @returns {boolean} Result of the validation.
 	 */
-	phone(phone) {
+	static phone(phone) {
 		let regex = /^\d+$/;
 		if (phone.trim().length > 8 && phone.trim().length < 13 && regex.test(phone)) {
 			return true;
@@ -49,9 +49,9 @@ class LocalValidator extends Validator {
 	 * @param nap {string} NAP to validate.
 	 * @returns {boolean} Result of the validation.
 	 */
-	nap(nap) {
+	static nap(nap) {
 		if (nap.trim().length > 3 && nap.trim().length < 6) {
-			if (/^\d{4,5}$/.test(string)) {
+			if (/^\d{4,5}$/.test(nap)) {
 				return true;
 			}
 		}
@@ -64,7 +64,7 @@ class LocalValidator extends Validator {
 	 * @param birthDate {string} Birth Date to validate.
 	 * @returns {boolean} Result of the validation.
 	 */
-	birthDate(birthDate) {
+	static birthDate(birthDate) {
 		let regex = /^\d{2}([./-])\d{2}\1\d{4}$/;
 
 		return regex.test(birthDate);
@@ -76,8 +76,8 @@ class LocalValidator extends Validator {
 	 * @param civicNumber {string} Civic Number to validate.
 	 * @returns {boolean} Result of the validation.
 	 */
-	civicNumber(civicNumber) {
+	static civicNumber(civicNumber) {
 		let regex = /^[A-z0-9]+$/;
 		return regex.test(civicNumber);
 	}
-};
+}
