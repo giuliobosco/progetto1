@@ -71,7 +71,8 @@ public class SaveServlet extends HttpServlet {
                 response.sendRedirect(redirectURL);
             }
         } catch (NotValidDataException nvde) {
-            System.out.println("not valid data");
+            String redirectURL = response.encodeRedirectURL("insert.html");
+            response.sendRedirect(redirectURL);
         } catch (NoCsvHeaderException nche) {
             System.out.println("nche");
         } catch (IOException ioe) {
