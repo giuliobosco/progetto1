@@ -126,6 +126,16 @@ public class RecordManager {
         writer.save();
     }
 
+    /**
+     * Check if the path exists.
+     *
+     * @param path Path to check.
+     * @return True if the path exist and is readable.
+     */
+    private boolean pathExist(Path path) {
+        return Files.exists(path) && !Files.notExists(path) && Files.isReadable(path);
+    }
+
     // ------------------------------------------------------------------------------------------------- General Methods
 
     /**
@@ -136,7 +146,11 @@ public class RecordManager {
      * @throws NoCsvHeaderException No CSV Header.
      */
     public String getLastRecord() throws IOException, NoCsvHeaderException {
-        return new CsvToJson(this.fullPath, ';').getLastJson();
+        if (this.pathExist(this.fullPath)) {
+            return new CsvToJson(this.fullPath, ';').getLastJson();
+        } else {
+            return "ERROR";
+        }
     }
 
     /**
@@ -147,7 +161,11 @@ public class RecordManager {
      * @throws NoCsvHeaderException No CSV Header.
      */
     public String getDailyRecords() throws IOException, NoCsvHeaderException {
-        return new CsvToJson(this.dailyPath, ';').getJson();
+        if (this.pathExist(this.dailyPath)) {
+            return new CsvToJson(this.dailyPath, ';').getJson();
+        } else {
+            return "ERROR";
+        }
     }
 
     /**
@@ -158,7 +176,11 @@ public class RecordManager {
      * @throws NoCsvHeaderException No CSV Header.
      */
     public String getFullRecords() throws IOException, NoCsvHeaderException {
-        return new CsvToJson(this.fullPath, ';').getJson();
+        if (this.pathExist(this.dailyPath)) {
+            return new CsvToJson(this.fullPath, ';').getJson();
+        } else {
+            return "ERROR";
+        }
     }
 
     /**
