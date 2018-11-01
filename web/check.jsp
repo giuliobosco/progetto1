@@ -174,9 +174,9 @@
 	
 	<div class="row pt10">
 		<div class="col-md-12 pt10">
-			<input class="pull-right col-md-1 button" type="submit" value="Salva>">
+			<input class="pull-right col-md-1 button" type="submit" formaction="Save" value="Salva>">
 			<div class="pull-right ph5">&nbsp;</div>
-			<input class="pull-right col-md-2 button" type="reset" value="Modifica">
+			<input class="pull-right col-md-2 button" type="submit" formaction="edit.jsp" value="Modifica">
 		</div>
 	</div>
 </form>
