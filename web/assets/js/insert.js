@@ -1,8 +1,7 @@
 $(document).ready(function () {
 
 	let nameValidator = new NameValidator(0,50);
-	let localValidators = new LocalValidator(0, 50);
-	let emailValidator = new EmailValidator(5, 256);
+	let emailValidator = new EmailValidator(4, 256);
 
 	let firstname = false;
 	let lastname = false;
@@ -32,7 +31,7 @@ $(document).ready(function () {
 
 	toggleSubmit();
 
-	$( "input[name='name']" ).keydown(function () {
+	$( "input[name='name']" ).keyup(function () {
 		if (nameValidator.isValid($(this).val())) {
 			$(this).css('border-color', '#000');
 			firstname = true;
@@ -44,7 +43,7 @@ $(document).ready(function () {
 		toggleSubmit();
 	});
 
-	$("input[name='surname']").keydown(function () {
+	$("input[name='surname']").keyup(function () {
 		if (nameValidator.isValid($(this).val())) {
 			$(this).css('border-color', '#000');
 			lastname = true;
@@ -56,7 +55,7 @@ $(document).ready(function () {
 		toggleSubmit();
 	});
 
-	$("input[name='street']").keydown(function () {
+	$("input[name='street']").keyup(function () {
 		if (nameValidator.isValid($(this).val())) {
 			$(this).css('border-color', '#000');
 			street = true;
@@ -68,8 +67,8 @@ $(document).ready(function () {
 		toggleSubmit();
 	});
 
-	$("input[name='streetNumber']").keydown(function () {
-		if (localValidators.civicNumber($(this).val())) {
+	$("input[name='streetNumber']").keyup(function () {
+		if (LocalValidator.civicNumber($(this).val())) {
 			$(this).css('border-color', '#000');
 			streetNumber = true;
 		} else {
@@ -80,7 +79,7 @@ $(document).ready(function () {
 		toggleSubmit();
 	});
 
-	$("input[name='city']").keydown(function () {
+	$("input[name='city']").keyup(function () {
 		if (nameValidator.isValid($(this).val())) {
 			$(this).css('border-color', '#000');
 			city = true;
@@ -92,8 +91,8 @@ $(document).ready(function () {
 		toggleSubmit();
 	});
 
-	$("input[name='nap']").keydown(function () {
-		if (localValidators.nap($(this).val())) {
+	$("input[name='nap']").keyup(function () {
+		if (LocalValidator.nap($(this).val())) {
 			$(this).css('border-color', '#000');
 			nap = true;
 		} else {
@@ -104,7 +103,7 @@ $(document).ready(function () {
 		toggleSubmit();
 	});
 
-	$("input[name='email']").keydown(function () {
+	$("input[name='email']").keyup(function () {
 		if (emailValidator.isValid($(this).val())) {
 			$(this).css('border-color', '#000');
 			email = true;
@@ -116,8 +115,8 @@ $(document).ready(function () {
 		toggleSubmit();
 	});
 
-	$("input[name='number']").keydown(function () {
-		if (localValidators.phone($(this).val())) {
+	$("input[name='number']").keyup(function () {
+		if (LocalValidator.phone($(this).val())) {
 			$(this).css('border-color', '#000');
 			number = true;
 		} else {
@@ -128,8 +127,8 @@ $(document).ready(function () {
 		toggleSubmit();
 	});
 
-	$("input[name='gender']").keydown(function () {
-		if (localValidators.gender($(this).val())) {
+	$("input[name='gender']").keyup(function () {
+		if (LocalValidator.gender($(this).val())) {
 			$(this).css('border-color', '#000');
 			gender = true;
 		} else {
