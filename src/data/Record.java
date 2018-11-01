@@ -173,10 +173,13 @@ public class Record {
      * Setter for the Name of the record.
      *
      * @param name Name of the record.
+     * @throws NotValidDataException Name not valid.
      */
-    public void setName(String name) {
+    public void setName(String name) throws NotValidDataException {
         if (nameValidator.isValid(name)) {
             this.name = name;
+        } else {
+            throw new NotValidDataException(nameValidator.getErrorMessagge());
         }
     }
 
@@ -193,10 +196,13 @@ public class Record {
      * Setter for the Surname of the record.
      *
      * @param surname Surname of the record.
+     * @throws NotValidDataException Surname not valid.
      */
-    public void setSurname(String surname) {
+    public void setSurname(String surname) throws NotValidDataException {
         if (nameValidator.isValid(surname)) {
             this.surname = surname;
+        } else {
+            throw new NotValidDataException(nameValidator.getErrorMessagge());
         }
     }
 
@@ -250,9 +256,11 @@ public class Record {
      *
      * @param phoneNumber Phone number of the record.
      */
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) throws NotValidDataException {
         if (numberValidator.isValid(phoneNumber)) {
             this.phoneNumber = phoneNumber;
+        } else {
+            throw new NotValidDataException(numberValidator.getErrorMessagge());
         }
     }
 
@@ -287,10 +295,13 @@ public class Record {
      * Setter for the Male or Female of the record.
      *
      * @param mf Male or Female of the record.
+     * @throws NotValidDataException The gender is not valid.
      */
-    public void setMf(char mf) {
+    public void setMf(char mf) throws NotValidDataException{
         if (mf == 'm' || mf == 'M' || mf == 'f' || mf == 'F') {
             this.mf = mf;
+        } else {
+            throw new NotValidDataException("the value: " + mf + " is not valid.");
         }
     }
 
@@ -457,7 +468,7 @@ public class Record {
      *
      * @param args Command Line arguments.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NotValidDataException {
         Record record = new Record();
 
         record.setName("John");
