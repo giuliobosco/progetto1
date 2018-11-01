@@ -184,5 +184,12 @@
 <div class="pt25 m"></div>
 
 <script src="lib/jquery/jquery.min.js"></script>
+
+<script src="assets/js/validator.js"></script>
+<script src="assets/js/emailValidator.js"></script>
+<script src="assets/js/localValidators.js"></script>
+<script src="assets/js/nameValidator.js"></script>
+
+<script src="lib/jquery/jquery.min.js"></script>
 </body>
 </html>
