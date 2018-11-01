@@ -1,18 +1,91 @@
+/**
+ * insert.js
+ * Insert page validation management.
+ *
+ * @author giuliobosco
+ * @version 1.5
+ */
+
+/**
+ * Name Validator, validator for strings.
+ * @type {NameValidator}
+ */
 let nameValidator = new NameValidator(0,50);
+/**
+ * Email Validator, validator for the email.
+ * @type {EmailValidator}
+ */
 let emailValidator = new EmailValidator(4, 256);
 
+/**
+ * First name validation status.
+ * @type {boolean}
+ */
 let firstname = false;
+
+/**
+ * Last name validation status.
+ * @type {boolean}
+ */
 let lastname = false;
+
+/**
+ * Date day validation status.
+ * @type {boolean}
+ */
 let day = false;
+
+/**
+ * Date year validation status.
+ * @type {boolean}
+ */
 let year = false;
+
+/**
+ * Street address validation status.
+ * @type {boolean}
+ */
 let street = false;
+
+/**
+ * Civic number address validation status.
+ * @type {boolean}
+ */
 let streetNumber = false;
+
+/**
+ * City address validation status.
+ * @type {boolean}
+ */
 let city = false;
+
+/**
+ * Nap address validation status.
+ * @type {boolean}
+ */
 let nap = false;
+
+/**
+ * Email validation status.
+ * @type {boolean}
+ */
 let email = false;
+
+/**
+ * Number validation status.
+ * @type {boolean}
+ */
 let number = false;
+
+/**
+ * Gender validation status.
+ * @type {boolean}
+ */
 let gender = false;
 
+/**
+ * Check the status of all validation and enable or disable the submit button.
+ */
 function toggleSubmit() {
 	if (firstname === true &&
 		lastname === true &&
@@ -31,6 +104,7 @@ function toggleSubmit() {
 		$("input[type='submit']").attr('disabled', 'disabled').css('background-color', 'rgba(0,0,117,0.75)');
 	}
 }
+
 
 $(document).ready(function () {
 
