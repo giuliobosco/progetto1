@@ -1,33 +1,36 @@
-$(document).ready(function () {
+let nameValidator = new NameValidator(0,50);
+let emailValidator = new EmailValidator(4, 256);
 
-	let nameValidator = new NameValidator(0,50);
-	let emailValidator = new EmailValidator(4, 256);
+let firstname = false;
+let lastname = false;
+let day = false;
+let year = false;
+let street = false;
+let streetNumber = false;
+let city = false;
+let nap = false;
+let email = false;
+let number = false;
+let gender = false;
 
-	let firstname = false;
-	let lastname = false;
-	let street = false;
-	let streetNumber = false;
-	let city = false;
-	let nap = false;
-	let email = false;
-	let number = false;
-	let gender = false;
-
-	function toggleSubmit() {
-		if (firstname === true &&
-			lastname === true &&
-			street === true &&
-			streetNumber === true &&
-			city === true &&
-			nap === true &&
-			email === true &&
-			number === true &&
-			gender === true) {
-			$("input[type='submit']").attr('enabled');
-		} else {
-			$("input[type='submit']").attr('disabled');
-		}
+function toggleSubmit() {
+	if (firstname === true &&
+		lastname === true &&
+		street === true &&
+		streetNumber === true &&
+		city === true &&
+		nap === true &&
+		email === true &&
+		number === true &&
+		gender === true) {
+		$("input[type='submit']").attr('enabled', 'enabled').css('background-color', '#00d');
+		console.log("en");
+	} else {
+		$("input[type='submit']").attr('disabled', 'disabled').css('background-color', 'rgba(0,0,117,0.75)');
 	}
+}
+
+$(document).ready(function () {
 
 	toggleSubmit();
 
