@@ -16,6 +16,8 @@ let gender = false;
 function toggleSubmit() {
 	if (firstname === true &&
 		lastname === true &&
+		day === true &&
+		year === true &&
 		street === true &&
 		streetNumber === true &&
 		city === true &&
@@ -53,6 +55,30 @@ $(document).ready(function () {
 		} else {
 			$(this).css('border-color', '#f00');
 			lastname = false;
+		}
+
+		toggleSubmit();
+	});
+
+	$("input[name='day']").keyup(function () {
+		if ($(this).val() > 0 && $(this).val() <= 31) {
+			$(this).css('border-color', '#000');
+			day = true;
+		} else {
+			$(this).css('border-color', '#f00');
+			day = false;
+		}
+
+		toggleSubmit();
+	});
+
+	$("input[name='year']").keyup(function () {
+		if ($(this).val() > 1900 && $(this).val() <= new Date().getFullYear()) {
+			$(this).css('border-color', '#000');
+			year = true;
+		} else {
+			$(this).css('border-color', '#f00');
+			year = false;
 		}
 
 		toggleSubmit();
