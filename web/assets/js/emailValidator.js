@@ -2,7 +2,7 @@
  * Email Validator.
  *
  * @author giuliobosco
- * @version 1.2
+ * @version 1.3
  */
 class EmailValidator extends Validator {
 	/**
@@ -12,11 +12,12 @@ class EmailValidator extends Validator {
 	 */
 	isValid(email) {
 
-		if ((email.trim().length > this.min && email.trim().length < this.max)) {
+		if (!(email.trim().length > this.min && email.trim().length < this.max)) {
 			return false;
 		}
 
-		let regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		let regex =
+			/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		return regex.test(email);
 	}
-};
+}
