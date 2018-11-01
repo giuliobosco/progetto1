@@ -151,10 +151,10 @@
 					Genere<sup>*</sup>
 				</div>
 				<div class="col-md-4">
-					<input type="radio" name="gender" value="m" <%=analysis[11].charAt(0)=='m'?"checked":""%>> Maschio
+					<input type="radio" name="gender" disabled value="m" <%=analysis[11].charAt(0)=='m'?"checked":""%>> Maschio
 				</div>
 				<div class="col-md-4">
-					<input type="radio" name="gender" value="f" <%=analysis[11].charAt(0)=='f'?"checked":""%>> Femmina
+					<input type="radio" name="gender" disabled value="f" <%=analysis[11].charAt(0)=='f'?"checked":""%>> Femmina
 				</div>
 			</section>
 		</div>
