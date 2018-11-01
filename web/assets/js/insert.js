@@ -73,7 +73,7 @@ $(document).ready(function () {
 	});
 
 	$("input[name='year']").keyup(function () {
-		if ($(this).val() > 1900 && $(this).val() <= new Date().getFullYear()) {
+		if ($(this).val() > (new Date().getFullYear() - 120) && $(this).val() <= new Date().getFullYear()) {
 			$(this).css('border-color', '#000');
 			year = true;
 		} else {
