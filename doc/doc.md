@@ -201,6 +201,8 @@ Siccome l'applicazione servirà per raccogliere dati di persone sconosciute si p
     - CSS
         - [Bootstrap - v3.3.4](http://getbootstrap.com/2.3.2/)
         - [FontAwesome - 4.3.0](https://fontawesome.com/)
+    - Java
+        - [Java Tomcat - v9.0.10](https://tomcat.apache.org)
 - IDE:
     - [jetBrains IntelliJ IDEA](https://www.jetbrains.com/idea/)
 - Progettazione:
@@ -210,7 +212,7 @@ Siccome l'applicazione servirà per raccogliere dati di persone sconosciute si p
 
 #### Hardware
 - Sviluppo
-    - portatile: MacBookPro 2017
+    - portatile: Apple - MacBookPro 2017
         - Processore: Intel Core i7
         - RAM: 16GB
         - Disk: 1TB SSD
@@ -239,7 +241,7 @@ Dati salvati nel CSV:
 Struttura dei dati:
 
 |nome campo|tipo campo|
-|-|-|
+|----------|----------|
 |data-ora|s|
 |nome|testo|
 |cognome|test|
@@ -254,58 +256,158 @@ Struttura dei dati:
 |hobby|testo|
 |professione|testo|
 
-### Schema E-R, schema logico e descrizione.
-
-Se il diagramma E-R viene modificato, sulla doc dovrà apparire l’ultima
-versione, mentre le vecchie saranno sui diari.
-
 ### Design delle interfacce
 
-Descrizione delle interfacce interne ed esterne del sistema e
-dell’interfaccia utente. La progettazione delle interfacce è basata
-sulle informazioni ricavate durante la fase di analisi e realizzata
-tramite mockups.
+#### Pagina di introduzione
+![Main page](img/Intro.png)
+
+In questa pagina vi è una introduzione al sito.  
+Con un bottone per spostarsi sulla pagina di inserimento dei dati.
+
+#### Pagina inserimento dati
+![Pagina di inserimento dati](img/DataInsert.png)
+
+In questa pagina vi sono i campi per inserire i dati.  
+Ci sono i seguenti campi di input, (quelli con * sono obbligatori):
+- Nome*
+- Cognome*
+- Data di nascita*
+- Indirizzo
+    - Cia*
+    - Numero civico*
+    - Cap*
+    - Città*
+- Numero di telefono*
+- Indirizzo e-mail*
+- Hobby
+- Professione
+
+Ci saranno anche due bottoni, uno per procedere ed uno per resettare tutti i campi.
+
+#### Pagina controllo dei dati
+![Pagina di controllo dei dati](img/DataCheck.png)
+
+Nella pagina di controllo dei dati, vi sarnno gli stessi campi che nella precedente.  
+Vi saranno sempre due bottoni, ma con due funzionalità diverse, uno scriverà i dati nel file CSV mentre il secondo permetterà di tornare alla pagina precedente per modificare i dati inseriti.
+
+#### Pagina di lettura dei dati
+![Pagina di lettura dei dati](img/DataRead.png)
+
+Nella pagina di lettura dei dati, vi sarà la possibilità di leggere l'ultimo dato inserito, o i dati inseriti nella giornata corrente (per orario del server), oppure tutti i dati inseriti.  
+Questo sarà possibile tramite te sezioni, con un menu sopra le quali.
 
 ### Design procedurale
 
 ![Data Diagram](img/data_diagram.png)
 
-Descrive i concetti dettagliati dell’architettura/sviluppo utilizzando
-ad esempio:
-
--   Diagrammi di flusso e Nassi.
-
--   Tabelle.
-
--   Classi e metodi.
-
--   Tabelle di routing
-
--   Diritti di accesso a condivisioni …
-
-Questi documenti permetteranno di rappresentare i dettagli procedurali
-per la realizzazione del prodotto.
+Entrando nel sito ci sarà una pagina di introduzione, poi la pagina di inserimento dati, dalla quale si puo procedere oppure resettare tutti i campi. Proseguendo vi è la pagina di controllo dei dati, dalla quale si può procedere oppure ritornare sull'inserimento dei dati e modificare i nomi. Procedendo si va sulla pagina di lettura dei dati.
 
 ## Implementazione
 
-In questo capitolo dovrà essere mostrato come è stato realizzato il
-lavoro. Questa parte può differenziarsi dalla progettazione in quanto il
-risultato ottenuto non per forza può essere come era stato progettato.
+### Web Server
 
-Sulla base di queste informazioni il lavoro svolto dovrà essere
-riproducibile.
+Per implementare la parte back-end di questo progetto (cioè la parte lato server), vi erano alcune opsioni di linguaggi di programmazione o scripting per eseguire le operazioni di lettura e scrittura sui file:
 
-In questa parte è richiesto l’inserimento di codice sorgente/print
-screen di maschere solamente per quei passaggi particolarmente
-significativi e/o critici.
+- PHP
+- Java
+- NodeJS
 
-Inoltre dovranno essere descritte eventuali varianti di soluzione o
-scelte di prodotti con motivazione delle scelte.
+![Comparation](img/back-end-coparation.jpg)
+[toptal.com](http://toptal.coms)
 
-Non deve apparire nessuna forma di guida d’uso di librerie o di
-componenti utilizzati. Eventualmente questa va allegata.
+In questo grafico è mostrato il tempo di risposta per una richiesta a parità di prestazioni del server.  
+Si può notare che Java è nettamente più veloce di PHP e NodeJS (questo accade soprattutto quando bisogna eseguire degli algoritmi o operazioni complicate). Questa grande differenza sta nel fatto che Java viene compilato e non interpretato come gli altri due linguaggi.
 
-Per eventuali dettagli si possono inserire riferimenti ai diari.
+Per questo progetto la differenza è minima e non verrebbe neanche notato dall'utente finale se viene usato un sistema o l'altro. Ho deciso di utilizzare comunque Java (non ostante ero a conoscenza che avrei riscontrato più difficoltà nello sviluppo dell'applicativo; Ed avrei speso molto tempo a capire come funziona il web server in Java). Ho preso questa decisione per iniziare a prendere confidenza con questo sistema, che potrebbe essermi molto utile in progetti più grandi ed importanti dove si ricerca il massimo della prestazione.  
+
+#### Configurazione del web-server
+
+Scaricare ed installare la Java Virtual Machine (JRE - Java Runtime Environment) e Java Development Kit (JDK).
+
+```URL
+http://www.oracle.com/technetwork/java/javase/downloads/index.html
+```
+
+Scariare i file binari di Tomcat:
+```URL
+http://tomcat.apache.org/
+```
+
+Per configurare le variabili d'ambiente di tomcat si può usare lo script fornito assieme hai file binari oppure manualmente (Guida per installazione manuale fornita assieme a tomcat). Lo script è disponibile sia per UNIX (`setevn.sh`), che per windows (`setevn.bat`), in entrambi i casi va abilitato.
+
+### Ambiente di sviluppo
+JetBrains IntelliJ IDEA, un tool professionale per sviluppo in Java. Utilizzandolo con la licenza "education" è gratuito. Siccome l'applicativo non verrà venduto, si ha il diritto di utilizzare questa licenza.
+
+#### Installazione IntelliJ IDEA
+Scaricare il file di installazione dal [sito ufficiale](https://www.jetbrains.com/idea/) ed avviarlo, poi seguire la procedura guidata.
+
+#### Configurazione Apache Tomcat con IntelliJ IDEA
+Prima di tutto bisogna configurare il web server Apache Tomcat (Capitolo precedente).
+
+Poi creare il progetto seguendo la procedura guidata per creare un progetto di tipo:  
+`Java Enterprise > Web Application` dopo di che aggiungere una configurazione di web server, scegliere il tipo `Tomcat > Local`, poi cliccare su `Configure`, li aggiungere un server inserendo il suo nome ed il percorso dei file binari precedentemente scaricati.  
+
+
+### Sviluppo applicativo
+
+#### Struttura web
+```
+ --- /index.html            (Pagina introduzione)
+  |
+  |- /insert.html           (Pagina inserimento dati)
+  |
+  |- /Insert                (Java InsertsServlet - Controllo inserimento dei dati)
+  |
+  |- /check.jsp             (Pagina di controllo dei dati)
+  |
+  |- /edit.jsp              (Pagina di modifica dei dati)
+  |
+  |- /Save                  (Java SaveServlet - Salvataggio dei dati)
+  |
+  |- /read.html             (Pagina di lettura dei dati)
+   |- assets/data/last.jsp  (Ultimo record in formato JSON)
+   |- assets/data/today.jsp (Registrazioni con la data odierna del server in formato JSON)
+   |- assets/data/all.jsp   (Tutte le registrazioni in formato JSON)
+```
+
+#### Front-End
+Per sviluppare le interfacce grafiche è stato utilizzato HTML & CSS (e Bootstrap), per la validazione dei dati JavaScript con la libreria jQuery e per interpretare i dati AngularJS (nella pagina di lettura dei dati).
+
+La pagina di introduzione è molto semplice con il titolo ed un bottone che porta alla pagina di inserimento dati.
+
+La pagina di inserimento dati e quella di controllo sono uguali, con la differenza che la seconda ha i cambi bloccati.
+
+#### Back-End
+
+Il back-end dell'applicativo è stato sviluppato in Java, utilizzando il web server Apache Tomcat (v9.0.10).
+
+##### Validators
+Come prima cosa sono stati implementati i `validators`, cioè le classi che si occupano della validazione dei dati.
+I validatori sono:
+
+|Nome|Utilizzo|
+|----|--------|
+|Validator|Validazione di stringa, controllo della lunghezza|
+|DateValidator|Validazione di oggetti data|
+|DomainValidator|Validazione di dominii internet|
+|UsernameValidator|Validazioni di username|
+|EmailValidator|Validazione di indirizzi email (utilizza UsernameValidator e DomainValidator)|
+|IntegerValidator|Validazione di numeri interi|
+|NumberValidator|Controlla il numero di cifre|
+|NameValidator|Validazione di Nomi, controlla che siano tutte lettere (anche con accenti)|
+
+##### CSV & Dati
+
+Dopo i validatori sono state implementate le classi relative alla gestione dei dati, più precisamente le classi relative al CSV e hai record del CSV.
+
+- Csv - Gestione dei file CSV, inserimento e lettura dei dati   
+    In questa classe engono utilizzati principalmente i paradigmi di programmazione relativi al file system e all'interpretazione dei dati da un CSV.
+- CsvToJson - Convertire il formato CSV ad una forma JSON di base
+
+- Record - Struttura del CSV e dati con relativa validazione
+- RecordManager - Gestione dei Record, Lettura o scrittura nel record
+
+Con anche le classi di gestione dei CSV, che sono:
 
 ## Test
 
