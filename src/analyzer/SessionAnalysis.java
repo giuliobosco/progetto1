@@ -23,7 +23,6 @@
  */
 package analyzer;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -31,7 +30,7 @@ import javax.servlet.http.HttpSession;
  * Check if the session attribute are right.
  *
  * @author giuliobosco
- * @version 1.0
+ * @version 1.1
  */
 public class SessionAnalysis {
     // -------------------------------------------------------------------------------------------------------- Costants

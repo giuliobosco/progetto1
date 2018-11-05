@@ -24,6 +24,7 @@
 package servlets;
 
 import java.io.IOException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
@@ -37,8 +38,9 @@ import data.Record;
  * Insert the data in the system.
  *
  * @author giuliobosco
- * @version 1.0
+ * @version 1.1
  */
+@WebServlet(name = "SaveServlet")
 public class InsertServlet extends HttpServlet {
     /**
      * Do on post request.
