@@ -1,4 +1,4 @@
-# documentation
+# Progetto1
 ##### Giulio Bosco - Progetto 1
 1. [Introduzione](#introduzione)
     - [Informazioni sul progetto](#informazioni-sul-progetto)
@@ -350,6 +350,9 @@ Poi creare il progetto seguendo la procedura guidata per creare un progetto di t
 
 ### Sviluppo applicativo
 
+#### Validazione dei dati
+La validazione dei dati è fatta sia in front-end che in back-end, questo per garantire velocità e prestazioni (front-end) e sicurezza dell'inserimento corretto dei dati (back-end).
+
 #### Struttura web
 ```
  --- /index.html            (Pagina introduzione)
@@ -373,9 +376,47 @@ Poi creare il progetto seguendo la procedura guidata per creare un progetto di t
 #### Front-End
 Per sviluppare le interfacce grafiche è stato utilizzato HTML & CSS (e Bootstrap), per la validazione dei dati JavaScript con la libreria jQuery e per interpretare i dati AngularJS (nella pagina di lettura dei dati).
 
-La pagina di introduzione è molto semplice con il titolo ed un bottone che porta alla pagina di inserimento dati.
+##### Introduzione
 
-La pagina di inserimento dati e quella di controllo sono uguali, con la differenza che la seconda ha i cambi bloccati.
+La pagina di introduzione è il file: `index.html`.
+
+Contiene il titolo della pagina ed un link alla pagina di inserimento dati.
+
+##### Inserimento dati
+
+La pagina di inserimento dei dati è il file: `insert.html`.
+
+La pagina di inserimento dati rispetta l'ordine dei campi come nel design delle interfaccie grafiche, sono stati migliorati gli aspetti grafici rispetto a quello che si pensava inizialmente.
+
+Quando un campo non è completato correttamente si colora il testo di rosso ed anche il bordo inferiore del elemento di input. La validazione dei dati è eseguita con dei validator scritti in JavaScript ed utilizzando jQuery per selezionare i campi da controllare, gestire i valori e gestire i colori (del testo e del bordo).
+
+Inizialmente per il campo della data si voleva inserire un campo di inserimento data con il calendario, poi pensando che dovendo inserire delle date di nascita, bisogna scorrere tutti i mesi di tutti gli anni, questo processo rischia di diventare molto lungo. Quindi è meglio un campo per il giorno, uno per il mese ed uno per l'anno.
+
+Quando tutti i campi obbligatori sono riempiti correttamente il bottone `procedi` si sblocca. È presente anche un'altro bottone che resetta tutti i valori.
+
+Invia i dati con il metodo POST alla JavaServlet `SaveServlet` identificata lato web con la definizione di accesso `/Save`.
+
+##### Controllo dei dati
+
+La pagina del controllo dei dati è sul file: `check.jsp`.
+
+La pagina è la stessa di quella dell'inserimento dei dati, con la differenza che i campi sono bloccati, quindi i valori non sono modificabili. Anche i due bottoni hanno funzionalità diverse, uno serve per richiamare la pagina di modifica dei dati, mentre il secondo per scrivere sul file.
+
+##### Modifica dei dati
+
+La pagina di modifica dei dati è sul file: `edit.jsp`.
+
+La pagina è quella di introduzione, solamente che prende i valori dalla sessione e li inserisce già nei campi. Così da essere pronti per essere modificati.
+
+##### La pagina di lettura dei dati
+
+La pagina di lettura dei dati è sul file `read.html`.
+
+La pagina di lettura dei dati è composta dal titolo della pagina, una barra di navigazione con 3 opsioni, ultimo record, record odierni e tutti i record. Ogniuna di queste voci avrà una sezione (solo quella selezionata sarà visibile).
+
+Nella prima sarà visibile subito tutto il contenuto della registrazione; mentre nelle seconde due sarà visibile subito il nome, il cognome e la data di nascita. cliccandovi sopra si potranno vedere tutti i dati.
+
+I dati vengono richiesti al server tramite una richiesta AJAX, il server ritorna un file JSON (uno per ogni sezione), che verrà interpretato da AngularJS.
 
 #### Back-End
 
@@ -402,12 +443,30 @@ Dopo i validatori sono state implementate le classi relative alla gestione dei d
 
 - Csv - Gestione dei file CSV, inserimento e lettura dei dati   
     In questa classe engono utilizzati principalmente i paradigmi di programmazione relativi al file system e all'interpretazione dei dati da un CSV.
-- CsvToJson - Convertire il formato CSV ad una forma JSON di base
+- CsvToJson - Convertire il formato CSV ad una forma JSON di base  
+    In questa classe viene utilizzata la classe Csv per interpretare i dati e poi vengono trasformati sotto forma di JSON, in una stringa.
+- Address - Indirizzo: Via, Numero civico, Città, CAP, Paese
+- Record - Struttura del CSV e dati con relativa validazione  
+    Struttura dei dati da registrare nell'applicativo
+- RecordManager - Gestione dei Record, Lettura o scrittura nel record  
+    Gestione dei CSV, per raggruppare la logica di gestione dei CSV.
 
-- Record - Struttura del CSV e dati con relativa validazione
-- RecordManager - Gestione dei Record, Lettura o scrittura nel record
+##### Analisi dei dati
 
-Con anche le classi di gestione dei CSV, che sono:
+Per facilitare il lavoro di controllo e analisi dei dati sono state create delle classi che analizzano le richieste e le sessioni HTTP.  
+Controllano che vi siano i dati obbligatori e che siano corretti, poi li prepara per poter essere passati alla classe Record.  
+Gli analyzer sono strettamente legati al record, quindi per altri utilizzi vanno riviste alcune parti.
+
+##### JavaServlets & JSP
+Le JavaServlets sono classi che vengono richiamate con delle richieste HTTP (o HTTPS) con almeno due metodi:
+
+- `doGet` (viene richiamato quando la richiesta è in get)
+- `doPost` (viene richiamato quando la richiesta é in post)
+
+Solitamente non vengono utilizzate per ritornare delle pagine HTML, ma per eseguire operazioni più complesse (Spesso eseguono un redirect su una pagina dinamica o statica). Mentre per ritornare pagine HTML (Pagine dinamiche) vengono utilizzate le JSP (JavaServer Peages).
+
+Le parti più complicate delle JavaServlets e JSPs sono la gestione delle sessioni utilizzata per mantenere i dati.  
+Siccome prima di creare la sessione vengono eseguiti molti controlli è stato deciso di spostare il codice relativo alla sessione negli analyzer.
 
 ## Test
 
