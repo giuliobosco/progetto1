@@ -40,7 +40,7 @@ import data.Record;
  * @author giuliobosco
  * @version 1.1
  */
-@WebServlet(name = "SaveServlet")
+@WebServlet(name = "InsertServlet")
 public class InsertServlet extends HttpServlet {
     /**
      * Do on post request.
