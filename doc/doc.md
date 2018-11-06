@@ -34,6 +34,7 @@
 1. [Allegati](#allegati)
 
 
+<div style="page-break-after: always;"></div>
 ## Introduzione
 
 ### Informazioni sul progetto
@@ -95,7 +96,7 @@ Una società sportiva richiede una applicazione web per raccogliere le iscrizion
 Attualmente non vi è nessun prodotto che esegue le registrazione per la società sportiva.
 Siccome l'applicazione servirà per raccogliere dati di persone sconosciute si presume che gli utenti non abbiano alcuna competenza informatica, l'applicazione potrebbe venire utilizzata sa qualunque dispositivo che possa avere accesso ad internet, quindi:
  - Dispositivi Mobile (Smartphone / Tablet)
- - Dispositivi Deskto
+ - Dispositivi Desktop
 
 ### Analisi e specifica dei requisiti
 
@@ -217,6 +218,7 @@ Siccome l'applicazione servirà per raccogliere dati di persone sconosciute si p
         - RAM: 16GB
         - Disk: 1TB SSD
 
+<div style="page-break-after: always;"></div>
 ## Progettazione
 
 ### Design dell’architettura del sistema
@@ -302,6 +304,7 @@ Questo sarà possibile tramite te sezioni, con un menu sopra le quali.
 
 Entrando nel sito ci sarà una pagina di introduzione, poi la pagina di inserimento dati, dalla quale si puo procedere oppure resettare tutti i campi. Proseguendo vi è la pagina di controllo dei dati, dalla quale si può procedere oppure ritornare sull'inserimento dei dati e modificare i nomi. Procedendo si va sulla pagina di lettura dei dati.
 
+<div style="page-break-after: always;"></div>
 ## Implementazione
 
 ### Web Server
@@ -316,7 +319,8 @@ Per implementare la parte back-end di questo progetto (cioè la parte lato serve
 [toptal.com](http://toptal.coms)
 
 In questo grafico è mostrato il tempo di risposta per una richiesta a parità di prestazioni del server.  
-Si può notare che Java è nettamente più veloce di PHP e NodeJS (questo accade soprattutto quando bisogna eseguire degli algoritmi o operazioni complicate). Questa grande differenza sta nel fatto che Java viene compilato e non interpretato come gli altri due linguaggi.
+Si può notare che Java è nettamente più veloce di PHP (questo accade soprattutto quando bisogna eseguire degli algoritmi o operazioni complicate). Questa grande differenza sta nel fatto che Java viene compilato e non interpretato come PHP.
+È stato deciso di non utilizzare NodeJS perché non si hanno nemmeno le conoscenze di base sul suo funzionamento.
 
 Per questo progetto la differenza è minima e non verrebbe neanche notato dall'utente finale se viene usato un sistema o l'altro. Ho deciso di utilizzare comunque Java (non ostante ero a conoscenza che avrei riscontrato più difficoltà nello sviluppo dell'applicativo; Ed avrei speso molto tempo a capire come funziona il web server in Java). Ho preso questa decisione per iniziare a prendere confidenza con questo sistema, che potrebbe essermi molto utile in progetti più grandi ed importanti dove si ricerca il massimo della prestazione.  
 
@@ -388,13 +392,34 @@ La pagina di inserimento dei dati è il file: `insert.html`.
 
 La pagina di inserimento dati rispetta l'ordine dei campi come nel design delle interfaccie grafiche, sono stati migliorati gli aspetti grafici rispetto a quello che si pensava inizialmente.
 
-Quando un campo non è completato correttamente si colora il testo di rosso ed anche il bordo inferiore del elemento di input. La validazione dei dati è eseguita con dei validator scritti in JavaScript ed utilizzando jQuery per selezionare i campi da controllare, gestire i valori e gestire i colori (del testo e del bordo).
+Quando un campo non è completato correttamente si colora il testo di rosso ed anche il bordo inferiore del elemento di input.
 
 Inizialmente per il campo della data si voleva inserire un campo di inserimento data con il calendario, poi pensando che dovendo inserire delle date di nascita, bisogna scorrere tutti i mesi di tutti gli anni, questo processo rischia di diventare molto lungo. Quindi è meglio un campo per il giorno, uno per il mese ed uno per l'anno.
 
 Quando tutti i campi obbligatori sono riempiti correttamente il bottone `procedi` si sblocca. È presente anche un'altro bottone che resetta tutti i valori.
 
 Invia i dati con il metodo POST alla JavaServlet `SaveServlet` identificata lato web con la definizione di accesso `/Save`.
+
+**Validazione dei dati**  
+La validazione dei dati è eseguita con dei validator scritti in JavaScript ed utilizzando jQuery per selezionare i campi da controllare, gestire i valori e gestire i colori (del testo e del bordo).  
+Le validazioni sono fatte con le espressioni regolari, come segue (esempio di espressione regolare per validare un numero telefonico):
+```js
+/**
+ * Validate the phone number.
+ *
+ * @param phone {string} Number to validate.
+ * @returns {boolean} Result of the validation.
+ */
+function phone(phone) {
+	let regex = /^\d+$/;
+	if (phone.trim().length > 8 && phone.trim().length < 13 && regex.test(phone)) {
+		return true;
+	} else {
+	    return false;
+	}
+}
+```
+Espressione regolare: `/^\d+$/`, indica che accetta solo numeri.
 
 ##### Controllo dei dati
 
@@ -417,6 +442,39 @@ La pagina di lettura dei dati è composta dal titolo della pagina, una barra di 
 Nella prima sarà visibile subito tutto il contenuto della registrazione; mentre nelle seconde due sarà visibile subito il nome, il cognome e la data di nascita. cliccandovi sopra si potranno vedere tutti i dati.
 
 I dati vengono richiesti al server tramite una richiesta AJAX, il server ritorna un file JSON (uno per ogni sezione), che verrà interpretato da AngularJS.
+
+Inizializazione dell'AngularJS WebApp:
+```js
+let app = angular.module('ReadApp',[]);
+
+app.controller('LastCtrl', ['$scope', '$http', function ($scope, $http) {
+	$http.get('assets/data/last.jsp')
+		.then(function (response) {
+
+			let data = response.data;
+
+			$scope.lastSubs = data;
+		});
+}]);
+
+app.controller('TodayCtrl', ['$scope', '$http', function ($scope, $http) {
+	$http.get('assets/data/today.jsp')
+		.then(function (response) {
+			let data = response.data;
+
+			$scope.todaySubs = data;
+		})
+}]);
+
+app.controller('AllCtrl', ['$scope', '$http', function ($scope, $http) {
+	$http.get('assets/data/all.jsp')
+		.then(function (response) {
+			let data = response.data;
+
+			$scope.allSubs = data;
+		})
+}]);
+```
 
 #### Back-End
 
@@ -454,8 +512,12 @@ Dopo i validatori sono state implementate le classi relative alla gestione dei d
 ##### Analisi dei dati
 
 Per facilitare il lavoro di controllo e analisi dei dati sono state create delle classi che analizzano le richieste e le sessioni HTTP.  
-Controllano che vi siano i dati obbligatori e che siano corretti, poi li prepara per poter essere passati alla classe Record.  
+Controllano che vi siano i dati obbligatori e che siano corretti, poi li prepara per poter essere utilizzati dalla con la classe Record.  
 Gli analyzer sono strettamente legati al record, quindi per altri utilizzi vanno riviste alcune parti.
+
+Sono stati creati due analyzer, uno per le richieste ed uno per le sessioni:
+- RequestAnalyzer
+- SessionAnalyzer
 
 ##### JavaServlets & JSP
 Le JavaServlets sono classi che vengono richiamate con delle richieste HTTP (o HTTPS) con almeno due metodi:
@@ -468,27 +530,110 @@ Solitamente non vengono utilizzate per ritornare delle pagine HTML, ma per esegu
 Le parti più complicate delle JavaServlets e JSPs sono la gestione delle sessioni utilizzata per mantenere i dati.  
 Siccome prima di creare la sessione vengono eseguiti molti controlli è stato deciso di spostare il codice relativo alla sessione negli analyzer.
 
+Esempio di servlet con redirect alla pagina `index.html`.
+```java
+import java.io.IOException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpSession;
+
+
+@WebServlet(name = "ExampleServlet")
+public ExampleServlet extends HttpServlet {
+    @Override
+    protected void doPost(
+            HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException {
+        String redirectURL = response.encodeRedirectURL("index.html");
+        response.sendRedirect(redirectURL);
+    }
+
+    @Override
+    protected void doGet(
+            HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException {
+        this.doPost(request, response);
+    }
+}
+```
+
+Sono state create due Servlet:
+- InsertServlet - Servlet per l'inserimento dei dati, esegue i controlli e reindirizza alla pagina di controllo dei dati.
+- SaveServlet - Controlla i dati e poi li salva nel file csv.
+
+Sono state create 2 pagine html con JSP.
+- check.jsp
+- edit.jsp
+
+Sono stati creati 3 file JSON con le JSP.
+- assets/data/last.jsp
+- assets/data/today.jsp
+- assets/data/all.jsp
+
+I file json vengono letti i dati dal file CSV dalla classe `Csv.java` e trasformati in JSON dalla classe `CsvToJson.java` tutto questo processo viene gestito dalla classe `RecordManager.java`
+
+Qui sotto è riportato il codice che genera il file JSON last.jsp:
+```java
+<%@ page import="data.RecordManager" %>
+<%@ page import="java.io.IOException" %>
+<%@ page import="helper.csv.NoCsvHeaderException" %>
+<%
+    /*
+     * Last subscription in json.
+     *
+     * @author giuliobosco
+     * @version 1.0
+     */
+%>
+<%
+    RecordManager rm = new RecordManager();
+    String record = "Error";
+    try {
+        record = rm.getLastRecord();
+    } catch (IOException ioe) {
+
+    } catch (NoCsvHeaderException nche) {
+
+    }
+%>
+<%=record%>
+```
+
 ## Test
 
 ### Protocollo di test
 
-Definire in modo accurato tutti i test che devono essere realizzati per
-garantire l’adempimento delle richieste formulate nei requisiti. I test
-fungono da garanzia di qualità del prodotto. Ogni test deve essere
-ripetibile alle stesse condizioni.
-
-
-|Test Case      | TC-001                               |
+|Test Case      | TC-001                              |
 |---------------|--------------------------------------|
-|**Nome**       |Import a card, but not shown with the GUI |
-|**Riferimento**|REQ-012                               |
-|**Descrizione**|Import a card with KIC, KID and KIK keys with no obfuscation, but not shown with the GUI |
-|**Prerequisiti**|Store on local PC: Profile\_1.2.001.xml (appendix n\_n) and Cards\_1.2.001.txt (appendix n\_n) |
-|**Procedura**     | - Go to “Cards manager” menu, in main page click “Import Profiles” link, Select the “1.2.001.xml” file, Import the Profile - Go to “Cards manager” menu, in main page click “Import Cards” link, Select the “1.2.001.txt” file, Delete the cards, Select the “1.2.001.txt” file, Import the cards |
-|**Risultati attesi** |Keys visible in the DB (OtaCardKey) but not visible in the GUI (Card details) |
+|**Nome**       | Test dati |
+|**Riferimento**|REQ-001 Sub-REQ-001                               |
+|**Descrizione**|Controllare che i file CSV vengano salvati correttamente |
+|**Prerequisiti**| Il prodotto deve essere completo |
+|**Procedura**     |1. inserire i propri dati nella pagina di registrazione. <br> 2. Cliccare su procedi <br> 3. Controllare di avere inserito i propri dati correttamente e cliccare su salva. |
+|**Risultati attesi** |Due file nella cartella Registrazioni, uno `Registrazioni_tutte.csv` ed uno `Registrazione_yyyy_mm_dd.csv`|
 
-#### Test moduli
-|Test Case      | TC-001                               |
+|Test Case      | TC-002                               |
+|---------------|--------------------------------------|
+|**Nome**       |File salvati nella root del sito sotto `Registrazioni` |
+|**Riferimento**|REQ-001 Sub-REQ-002, Sub-REQ-003                              |
+|**Descrizione**|Controllare che i files CSV vengano salvati nella cartella `Registrazioni` |
+|**Prerequisiti**| Il prodotto deve essere completo |
+|**Procedura**     |1. inserire i propri dati nella pagina di registrazione. <br> 2. Cliccare su procedi <br> 3. Controllare di avere inserito i propri dati correttamente e cliccare su salva. <br> 4. Aprire in una nuova pagina `/Registrazioni/Registrazioni_tutte.csv` sull'indirizzo del server. <br> 5. Aprire in una nuova pagina `/Registrazioni/Registrazione_yyyy_mm_dd.csv` sull'indirizzo del server. |
+|**Risultati attesi** | Nelle due pagine aperte vi devono essere i file csv. <br> Uno con tutte le registrazioni, mentre il secondo con le registrazioni giornaliere. <br> All'interno dei csv i dati devono essere separati da un `;`. |
+
+|Test Case      | TC-003                              |
+|---------------|--------------------------------------|
+|**Nome**       | Pagine |
+|**Riferimento**|REQ-002                               |
+|**Descrizione**|Controllare che siano state implementate tutte le pagine |
+|**Prerequisiti**| Il prodotto deve essere completo |
+|**Procedura**     |1. Controllare che sia sta creata la pagina di benvenuto. <br> 2. Controllare che sia stata creata la pagina di inserimento dati. <br> 3. Controllare che sia stata creata la pagina di controllo dei dati. <br> 4. Controllare che sia stata implementata la pagina di lettura dei dati. |
+|**Risultati attesi** | Le quattro pagine devono essere presenti. |
+
+|Test Case      | TC-004                               |
 |---------------|--------------------------------------|
 |**Nome**       |Verifica dei campi di input |
 |**Riferimento**|REQ-004 Sub-REQ-001                               |
@@ -497,26 +642,77 @@ ripetibile alle stesse condizioni.
 |**Procedura**     |1. inserire i propri dati nella pagina di registrazione. <br> 2. verificare che nessun campo venga sottolinato di rosso. |
 |**Risultati attesi** |Nessun dato deve essere sottolineato di rosso. |
 
--
+|Test Case      | TC-005                              |
+|---------------|--------------------------------------|
+|**Nome**       | Pagina inserimento dati, Bottone annullamento |
+|**Riferimento**|REQ-004 Sub-REQ-002                               |
+|**Descrizione**|Controllare che il tasto di annullamento annulli tutti i campi. |
+|**Prerequisiti**| Il prodotto deve essere completo |
+|**Procedura**     |1. Inserire dei dati nei campi. <br> 2. Cliccare su annulla. |
+|**Risultati attesi** | I campi devono essere vuoi. |
 
+|Test Case      | TC-006                              |
+|---------------|--------------------------------------|
+|**Nome**       | Pagina inserimento dati, Bottone procedi |
+|**Riferimento**|REQ-004 Sub-REQ-003                               |
+|**Descrizione**| Controllare che il tasto di avanzamento porti alla pagina di controllo dei dati. |
+|**Prerequisiti**| Il prodotto deve essere completo |
+|**Procedura**     | 1. Inserire i dati nella pagina di inserimento. <br> 2. Cliccare su procedi. |
+|**Risultati attesi** | Bisogna essere portati sulla pagina di controllo dei dati con i dati inseriti precedentemente. |
 
+|Test Case      | TC-007                              |
+|---------------|--------------------------------------|
+|**Nome**       | Pagina controllo dati, Bottone modifica |
+|**Riferimento**|REQ-005 Sub-REQ-002                               |
+|**Descrizione**| Controllare che il botton di modifica dei dati funzioni correttamente. |
+|**Prerequisiti**| Il prodotto deve essere completo |
+|**Procedura**     |1. inserire i propri dati nella pagina di registrazione. <br> 2. Cliccare su procedi <br> 3. Cliccare su modifica. |
+|**Risultati attesi** | La pagina deve essere quella di inserimento dei dati con i dati già inseriti. |
+
+|Test Case      | TC-008                              |
+|---------------|--------------------------------------|
+|**Nome**       | Pagina controllo dati, Bottone salva |
+|**Riferimento**|REQ-005 Sub-REQ-003                               |
+|**Descrizione**| Controllare che il botton di salvataggio dei dati funzioni correttamente. |
+|**Prerequisiti**| Il prodotto deve essere completo |
+|**Procedura**     |1. inserire i propri dati nella pagina di registrazione. <br> 2. Cliccare su procedi <br> 3. Cliccare su salva. |
+|**Risultati attesi** | Deve apparire la pagina di lettura dei dati con i dati appena inseriti. |
+
+|Test Case      | TC-009                              |
+|---------------|--------------------------------------|
+|**Nome**       | Pagina lettura dati, dati |
+|**Riferimento**|REQ-005 Sub-REQ-002                               |
+|**Descrizione**| Controllare che i dati vengano riportati correttamente. |
+|**Prerequisiti**| Il prodotto deve essere completo |
+|**Procedura**     |1. inserire i propri dati nella pagina di registrazione. <br> 2. Cliccare su procedi <br> 3. Cliccare su salva. |
+|**Risultati attesi** | Controllare che i dati mostrati siano quelli inseriti precedentemente. |
 
 ### Risultati test
 
-Tabella riassuntiva in cui si inseriscono i test riusciti e non del
-prodotto finale. Se un test non riesce e viene corretto l’errore, questo
-dovrà risultare nel documento finale come riuscito (la procedura della
-correzione apparirà nel diario), altrimenti dovrà essere descritto
-l’errore con eventuali ipotesi di correzione.
+| Test Case | Risultato | Descrizione |
+|-----------|-----------|-------------|
+| TC-001 | OK | - |
+| TC-002 | **Error** | I file vegnono scritti nella directory home del server, non dei file web. |
+| TC-003 | OK | - |
+| TC-004 | OK | - |
+| TC-005 | OK | - |
+| TC-006 | OK | - |
+| TC-007 | OK | - |
+| TC-008 | OK | - |
+| TC-009 | OK | - |
+
+#### TC-002
+Si potrebbero creare delle servlet o delle pagine JSP che scrivano il file CSV. Il problema si riporta quando bisogna leggere il file con la data. Non c'è stato abbastanza tempo per implementare questa parte.
 
 ### Mancanze/limitazioni conosciute
 
-Descrizione con motivazione di eventuali elementi mancanti o non
-completamente implementati, al di fuori dei test case. Non devono essere
-riportati gli errori e i problemi riscontrati e poi risolti durante il
-progetto.
+Nella pagina di lettura dei dati i dati non sono nella stessa posizione perché è stato scelto di poter mostrare anche gli altri dati. Quindi non vi era la possibilità di mantenere la stessa struttura della pagina.
 
 ## Consuntivo
+
+Per poter consegnare il prodotto in tempo e con le funzionalità di base ho dovuto lavorare anche fuori orario.
+
+![Gantt Consuntivo](img/consuntivo.png)
 
 Consuntivo del tempo di lavoro effettivo e considerazioni riguardo le
 differenze rispetto alla pianificazione (cap 1.7) (ad esempio Gannt
@@ -524,49 +720,19 @@ consuntivo).
 
 ## Conclusioni
 
-Quali sono le implicazioni della mia soluzione? Che impatto avrà?
-Cambierà il mondo? È un successo importante? È solo un’aggiunta
-marginale o è semplicemente servita per scoprire che questo percorso è
-stato una perdita di tempo? I risultati ottenuti sono generali,
-facilmente generalizzabili o sono specifici di un caso particolare? ecc
+La soluzione che sono riuscito ad implementare è funzionale, e soprattutto è multipiattaforma. Aiuterà la società sportiva a raccogliere dati.
+
+Mi è servito molto perché ho imparato come funzionano le basi di Apache Tomcat, il web server Java.
 
 ### Sviluppi futuri
-  Migliorie o estensioni che possono essere sviluppate sul prodotto.
+
+Si potrebbe creare una pagina di login, per le persone autorizzate a scaricare i file CSV.
 
 ### Considerazioni personali
-  Cosa ho imparato in questo progetto? ecc
 
-## Bibliografia
+In questo progetto ho imparato a gestirmi meglio con i tempi di consegna, gestirmi il lavoro da eseguire ed in oltre ho imparato come funzionano le basi del web server Apache Tomcat per Java.
 
-### Bibliografia per articoli di riviste
-1.  Cognome e nome (o iniziali) dell’autore o degli autori, o nome
-    dell’organizzazione,
-
-2.  Titolo dell’articolo (tra virgolette),
-
-3.  Titolo della rivista (in italico),
-
-4.  Anno e numero
-
-5.  Pagina iniziale dell’articolo,
-
-### Bibliografia per libri
-
-
-1.  Cognome e nome (o iniziali) dell’autore o degli autori, o nome
-    dell’organizzazione,
-
-2.  Titolo del libro (in italico),
-
-3.  ev. Numero di edizione,
-
-4.  Nome dell’editore,
-
-5.  Anno di pubblicazione,
-
-6.  ISBN.
-
-### Sitografia
+## Sitografia
 
 1.  URL del sito (se troppo lungo solo dominio, evt completo nel
     diario),
