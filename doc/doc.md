@@ -1,3 +1,5 @@
+<span style="text-align: justify;">
+
 # Progetto1
 ##### Giulio Bosco - Progetto 1
 1. [Introduzione](#introduzione)
@@ -7,21 +9,28 @@
 
 1. [Analisi](#analisi)
     - [Analisi del dominio](#analisi-del-dominio)
-    - [Analisi dei mezzi](#analisi-dei-mezzi)
     - [Analisi e specifica dei requisiti](#analisi-e-specifica-dei-requisiti)
-    - [Use case](#use-case)
+    - [Analisi dei mezzi](#analisi-dei-mezzi)
     - [Pianificazione](#pianificazione)
 
 1. [Progettazione](#progettazione)
     - [Design dell’architettura del sistema](#design-dell’architettura-del-sistema)
     - [Design dei dati e database](#design-dei-dati-e-database)
+    - [Design delle interfaccie](#design-delle-interfacce)
+    - [Design procedurale](#design-procedurale)
 
 1. [Implementazione](#implementazione)
+    - [Web Server](#web-server)
+    - [Ambiente di sviluppo](#ambiente-di-sviluppo)
+    - [Sviluppo Applicativo](#sviluppo-applicativo)
+        - [Front-end](#front-end)
+        - [Back-end](#back-end)
 
 1. [Test](#test)
     - [Protocollo di test](#protocollo-di-test)
     - [Risultati test](#risultati-test)
-    - [Mancanze/limitazioni conosciute](#mancanze/limitazioni-conosciute)
+
+1. [Mancanze/limitazioni conosciute](#mancanze/limitazioni-conosciute)
 
 1. [Consuntivo](#consuntivo)
 
@@ -35,6 +44,7 @@
 
 
 <div style="page-break-after: always;"></div>
+
 ## Introduzione
 
 ### Informazioni sul progetto
@@ -48,42 +58,10 @@ Data fine: 09.11.2018
 
 ### Abstract
 
-E’ una breve e accurata rappresentazione dei contenuti di un documento,
-senza notazioni critiche o valutazioni. Lo scopo di un abstract efficace
-dovrebbe essere quello di far conoscere all’utente il contenuto di base
-  di un documento e metterlo nella condizione di decidere se risponde ai
-  suoi interessi e se è opportuno il ricorso al documento originale.
-
-  Può contenere alcuni o tutti gli elementi seguenti:
-
-  -   **Background/Situazione iniziale**
-
-  -   **Descrizione del problema e motivazione**: Che problema ho cercato
-      di risolvere? Questa sezione dovrebbe includere l'importanza del
-      vostro lavoro, la difficoltà dell'area e l'effetto che potrebbe
-      avere se portato a termine con successo.
-
-  -   **Approccio/Metodi**: Come ho ottenuto dei progressi? Come ho
-      risolto il problema (tecniche…)? Quale è stata l’entità del mio
-      lavoro? Che fattori importanti controllo, ignoro o misuro?
-
-  -   **Risultati**: Quale è la risposta? Quali sono i risultati? Quanto è
-      più veloce, più sicuro, più economico o in qualche altro aspetto
-      migliore di altri prodotti/soluzioni?
-
-  Esempio di abstract:
-
-  > *As the size and complexity of today’s most modern computer chips
-  > increase, new techniques must be developed to effectively design and
-  > create Very Large Scale Integration chips quickly. For this project, a
-  > new type of hardware compiler is created. This hardware compiler will
-  > read a C++ program, and physically design a suitable microprocessor
-  > intended for running that specific program. With this new and powerful
-  > compiler, it is possible to design anything from a small adder, to a
-  > microprocessor with millions of transistors. Designing new computer
-  > chips, such as the Pentium 4, can require dozens of engineers and
-  > months of time. With the help of this compiler, a single person could
-  > design such a large-scale microprocessor in just weeks.*
+> Un sport assosiation require a digital system for collect the data of the
+> people intrests their activity.   
+> Used java for write the info on the server and as web-server, with Apache Tomcat.  
+> This system works well, is fast and do require low memory.
 
 ### Scopo
 
@@ -97,6 +75,9 @@ Attualmente non vi è nessun prodotto che esegue le registrazione per la societ�
 Siccome l'applicazione servirà per raccogliere dati di persone sconosciute si presume che gli utenti non abbiano alcuna competenza informatica, l'applicazione potrebbe venire utilizzata sa qualunque dispositivo che possa avere accesso ad internet, quindi:
  - Dispositivi Mobile (Smartphone / Tablet)
  - Dispositivi Desktop
+
+
+ <div style="page-break-after: always;"></div>
 
 ### Analisi e specifica dei requisiti
 
@@ -128,7 +109,7 @@ Siccome l'applicazione servirà per raccogliere dati di persone sconosciute si p
 |**003**     | ci deve essere una pagina per controllare i dati precedentemente inseriti. |
 |**004**     | ci deve essere una pagina per visualizzare i dati appena inseriti. |
 
-#
+<div style="page-break-after: always;"></div>
 
 |ID  |REQ-003                                        |
 |----|------------------------------------------------|
@@ -165,7 +146,7 @@ Siccome l'applicazione servirà per raccogliere dati di persone sconosciute si p
 |**002**     | Ci deve essere un tasto per correggere i dati inseriti, che riporti alla pagina: _Inserzione Dati_ |
 |**003**     | Ci deve essere un tasto per la registrazione, che scriva i dati sul csv e che poi porti alla pagina di _Lettura dei dati dal CSV_ |
 
-#
+<div style="page-break-after: always;"></div>
 
 |ID  |REQ-006                                        |
 |----|------------------------------------------------|
@@ -191,6 +172,8 @@ Siccome l'applicazione servirà per raccogliere dati di persone sconosciute si p
 
 ### Pianificazione
 ![Project Planning](img/gant.png)
+
+<div style="page-break-after: always;"></div>
 
 ### Analisi dei mezzi
 
@@ -219,6 +202,7 @@ Siccome l'applicazione servirà per raccogliere dati di persone sconosciute si p
         - Disk: 1TB SSD
 
 <div style="page-break-after: always;"></div>
+
 ## Progettazione
 
 ### Design dell’architettura del sistema
@@ -239,8 +223,9 @@ Salvataggio dei dati eseguito su due file CSV.
     - Ogni giorno viene creato un nuovo file.
     - Path: "/Registrazioni/Registrazione_YYYY_MM_DD.csv"
 
-Dati salvati nel CSV:  
-Struttura dei dati:
+<div style="page-break-after: always;"></div>
+
+**Struttura dei dati**:
 
 |nome campo|tipo campo|
 |----------|----------|
@@ -258,6 +243,8 @@ Struttura dei dati:
 |hobby|testo|
 |professione|testo|
 
+<div style="page-break-after: always;"></div>
+
 ### Design delle interfacce
 
 #### Pagina di introduzione
@@ -265,6 +252,8 @@ Struttura dei dati:
 
 In questa pagina vi è una introduzione al sito.  
 Con un bottone per spostarsi sulla pagina di inserimento dei dati.
+
+<div style="page-break-after: always;"></div>
 
 #### Pagina inserimento dati
 ![Pagina di inserimento dati](img/DataInsert.png)
@@ -286,11 +275,16 @@ Ci sono i seguenti campi di input, (quelli con * sono obbligatori):
 
 Ci saranno anche due bottoni, uno per procedere ed uno per resettare tutti i campi.
 
+
+<div style="page-break-after: always;"></div>
+
 #### Pagina controllo dei dati
 ![Pagina di controllo dei dati](img/DataCheck.png)
 
 Nella pagina di controllo dei dati, vi sarnno gli stessi campi che nella precedente.  
 Vi saranno sempre due bottoni, ma con due funzionalità diverse, uno scriverà i dati nel file CSV mentre il secondo permetterà di tornare alla pagina precedente per modificare i dati inseriti.
+
+<div style="page-break-after: always;"></div>
 
 #### Pagina di lettura dei dati
 ![Pagina di lettura dei dati](img/DataRead.png)
@@ -305,6 +299,7 @@ Questo sarà possibile tramite te sezioni, con un menu sopra le quali.
 Entrando nel sito ci sarà una pagina di introduzione, poi la pagina di inserimento dati, dalla quale si puo procedere oppure resettare tutti i campi. Proseguendo vi è la pagina di controllo dei dati, dalla quale si può procedere oppure ritornare sull'inserimento dei dati e modificare i nomi. Procedendo si va sulla pagina di lettura dei dati.
 
 <div style="page-break-after: always;"></div>
+
 ## Implementazione
 
 ### Web Server
@@ -323,6 +318,8 @@ Si può notare che Java è nettamente più veloce di PHP (questo accade soprattu
 È stato deciso di non utilizzare NodeJS perché non si hanno nemmeno le conoscenze di base sul suo funzionamento.
 
 Per questo progetto la differenza è minima e non verrebbe neanche notato dall'utente finale se viene usato un sistema o l'altro. Ho deciso di utilizzare comunque Java (non ostante ero a conoscenza che avrei riscontrato più difficoltà nello sviluppo dell'applicativo; Ed avrei speso molto tempo a capire come funziona il web server in Java). Ho preso questa decisione per iniziare a prendere confidenza con questo sistema, che potrebbe essermi molto utile in progetti più grandi ed importanti dove si ricerca il massimo della prestazione.  
+
+<div style="page-break-after: always;"></div>
 
 #### Configurazione del web-server
 
@@ -351,6 +348,7 @@ Prima di tutto bisogna configurare il web server Apache Tomcat (Capitolo precede
 Poi creare il progetto seguendo la procedura guidata per creare un progetto di tipo:  
 `Java Enterprise > Web Application` dopo di che aggiungere una configurazione di web server, scegliere il tipo `Tomcat > Local`, poi cliccare su `Configure`, li aggiungere un server inserendo il suo nome ed il percorso dei file binari precedentemente scaricati.  
 
+<div style="page-break-after: always;"></div>
 
 ### Sviluppo applicativo
 
@@ -560,6 +558,8 @@ public ExampleServlet extends HttpServlet {
 }
 ```
 
+<div style="page-break-after: always;"></div>
+
 Sono state create due Servlet:
 - InsertServlet - Servlet per l'inserimento dei dati, esegue i controlli e reindirizza alla pagina di controllo dei dati.
 - SaveServlet - Controlla i dati e poi li salva nel file csv.
@@ -602,6 +602,8 @@ Qui sotto è riportato il codice che genera il file JSON last.jsp:
 <%=record%>
 ```
 
+<div style="page-break-after: always;"></div>
+
 ## Test
 
 ### Protocollo di test
@@ -615,6 +617,8 @@ Qui sotto è riportato il codice che genera il file JSON last.jsp:
 |**Procedura**     |1. inserire i propri dati nella pagina di registrazione. <br> 2. Cliccare su procedi <br> 3. Controllare di avere inserito i propri dati correttamente e cliccare su salva. |
 |**Risultati attesi** |Due file nella cartella Registrazioni, uno `Registrazioni_tutte.csv` ed uno `Registrazione_yyyy_mm_dd.csv`|
 
+#
+
 |Test Case      | TC-002                               |
 |---------------|--------------------------------------|
 |**Nome**       |File salvati nella root del sito sotto `Registrazioni` |
@@ -623,6 +627,8 @@ Qui sotto è riportato il codice che genera il file JSON last.jsp:
 |**Prerequisiti**| Il prodotto deve essere completo |
 |**Procedura**     |1. inserire i propri dati nella pagina di registrazione. <br> 2. Cliccare su procedi <br> 3. Controllare di avere inserito i propri dati correttamente e cliccare su salva. <br> 4. Aprire in una nuova pagina `/Registrazioni/Registrazioni_tutte.csv` sull'indirizzo del server. <br> 5. Aprire in una nuova pagina `/Registrazioni/Registrazione_yyyy_mm_dd.csv` sull'indirizzo del server. |
 |**Risultati attesi** | Nelle due pagine aperte vi devono essere i file csv. <br> Uno con tutte le registrazioni, mentre il secondo con le registrazioni giornaliere. <br> All'interno dei csv i dati devono essere separati da un `;`. |
+
+<div style="page-break-after: always;"></div>
 
 |Test Case      | TC-003                              |
 |---------------|--------------------------------------|
@@ -633,6 +639,8 @@ Qui sotto è riportato il codice che genera il file JSON last.jsp:
 |**Procedura**     |1. Controllare che sia sta creata la pagina di benvenuto. <br> 2. Controllare che sia stata creata la pagina di inserimento dati. <br> 3. Controllare che sia stata creata la pagina di controllo dei dati. <br> 4. Controllare che sia stata implementata la pagina di lettura dei dati. |
 |**Risultati attesi** | Le quattro pagine devono essere presenti. |
 
+#
+
 |Test Case      | TC-004                               |
 |---------------|--------------------------------------|
 |**Nome**       |Verifica dei campi di input |
@@ -641,6 +649,8 @@ Qui sotto è riportato il codice che genera il file JSON last.jsp:
 |**Prerequisiti**| La pagina di registrazione deve essere implementata |
 |**Procedura**     |1. inserire i propri dati nella pagina di registrazione. <br> 2. verificare che nessun campo venga sottolinato di rosso. |
 |**Risultati attesi** |Nessun dato deve essere sottolineato di rosso. |
+
+#
 
 |Test Case      | TC-005                              |
 |---------------|--------------------------------------|
@@ -651,6 +661,8 @@ Qui sotto è riportato il codice che genera il file JSON last.jsp:
 |**Procedura**     |1. Inserire dei dati nei campi. <br> 2. Cliccare su annulla. |
 |**Risultati attesi** | I campi devono essere vuoi. |
 
+<div style="page-break-after: always;"></div>
+
 |Test Case      | TC-006                              |
 |---------------|--------------------------------------|
 |**Nome**       | Pagina inserimento dati, Bottone procedi |
@@ -659,6 +671,8 @@ Qui sotto è riportato il codice che genera il file JSON last.jsp:
 |**Prerequisiti**| Il prodotto deve essere completo |
 |**Procedura**     | 1. Inserire i dati nella pagina di inserimento. <br> 2. Cliccare su procedi. |
 |**Risultati attesi** | Bisogna essere portati sulla pagina di controllo dei dati con i dati inseriti precedentemente. |
+
+#
 
 |Test Case      | TC-007                              |
 |---------------|--------------------------------------|
@@ -669,6 +683,8 @@ Qui sotto è riportato il codice che genera il file JSON last.jsp:
 |**Procedura**     |1. inserire i propri dati nella pagina di registrazione. <br> 2. Cliccare su procedi <br> 3. Cliccare su modifica. |
 |**Risultati attesi** | La pagina deve essere quella di inserimento dei dati con i dati già inseriti. |
 
+#
+
 |Test Case      | TC-008                              |
 |---------------|--------------------------------------|
 |**Nome**       | Pagina controllo dati, Bottone salva |
@@ -677,6 +693,8 @@ Qui sotto è riportato il codice che genera il file JSON last.jsp:
 |**Prerequisiti**| Il prodotto deve essere completo |
 |**Procedura**     |1. inserire i propri dati nella pagina di registrazione. <br> 2. Cliccare su procedi <br> 3. Cliccare su salva. |
 |**Risultati attesi** | Deve apparire la pagina di lettura dei dati con i dati appena inseriti. |
+
+<div style="page-break-after: always;"></div>
 
 |Test Case      | TC-009                              |
 |---------------|--------------------------------------|
@@ -704,7 +722,9 @@ Qui sotto è riportato il codice che genera il file JSON last.jsp:
 #### TC-002
 Si potrebbero creare delle servlet o delle pagine JSP che scrivano il file CSV. Il problema si riporta quando bisogna leggere il file con la data. Non c'è stato abbastanza tempo per implementare questa parte.
 
-### Mancanze/limitazioni conosciute
+<div style="page-break-after: always;"></div>
+
+## Mancanze/limitazioni conosciute
 
 Nella pagina di lettura dei dati i dati non sono nella stessa posizione perché è stato scelto di poter mostrare anche gli altri dati. Quindi non vi era la possibilità di mantenere la stessa struttura della pagina.
 
@@ -717,6 +737,8 @@ Per poter consegnare il prodotto in tempo e con le funzionalità di base ho dovu
 Consuntivo del tempo di lavoro effettivo e considerazioni riguardo le
 differenze rispetto alla pianificazione (cap 1.7) (ad esempio Gannt
 consuntivo).
+
+<div style="page-break-after: always;"></div>
 
 ## Conclusioni
 
@@ -743,26 +765,16 @@ In questo progetto ho imparato a gestirmi meglio con i tempi di consegna, gestir
 
 **Esempio:**
 
--   http://standards.ieee.org/guides/style/section7.html, *IEEE
-    Standards Style Manual*, 07-06-2008.
+- http://stackoverflow.com, *Stack Overflow*
+- http://w3schools.com, *W3schools*
+- http://tomcat.apache.org/, *Apache Tomcat*
+- https://www.reddit.com/, *Reddit*
+- https://angularjs.org/, *AngularJS*
+- http://getbootstrap.com/, *Bootstrap*
 
 ## Allegati
 
-Elenco degli allegati, esempio:
+- Diari di lavoro (cartella: /diary)
+- Codici sorgente (cartella file web: /web; cartella classi: /src)
 
--   Diari di lavoro
-
--   Codici sorgente/documentazione macchine virtuali
-
--   Istruzioni di installazione del prodotto (con credenziali
-    di accesso) e/o di eventuali prodotti terzi
-
--   Documentazione di prodotti di terzi
-
--   Eventuali guide utente / Manuali di utilizzo
-
--   Mandato e/o Qdc
-
--   Prodotto
-
--   …
+</span>
