@@ -55,24 +55,23 @@ Scuola: Scuola Arti e Mestieri di Trevano \
 Sezione: SAMT I3AA \
 Data inizio: 05.09.2018 \
 Data fine: 09.11.2018
+Git-Hub link: [https://github.com/boscogiulio/progetto1](https://github.com/boscogiulio/progetto1)
 
 ### Abstract
 
-> Un sport assosiation require a digital system for collect the data of the
-> people intrests their activity.   
-> Used java for write the info on the server and as web-server, with Apache Tomcat.  
-> This system works well, is fast and do require low memory.
+> Is required an web application for collect the basic information of people.
+> Used java for write the collected data on the CSV file in the server, as web-server has
+> been used Apache Tomcat, written in Java, so all the back-end stuffs are written in Java.
 
 ### Scopo
 
-Una società sportiva richiede una applicazione web per raccogliere le iscrizioni al corso di introduzione alla disciplina praticata. L'applicazione deve salvare i dati in 2 file CSV, uno con tutte le registrazioni mentre il secondo con tutte le registrazioni eseguite in quel giorno.
+Questa è una webapp a scopo didattico. L'applicazione deve permettere gli utenti di registrarsi con i propri dati. Deve salvare le registrazioni in due file CSV. Uno deve contenere i dati giornalieri mentre il secondo tutte le registrazioni. I dati devono essere validati.
 
 ## Analisi
 
 ### Analisi del dominio
 
-Attualmente non vi è nessun prodotto che esegue le registrazione per la società sportiva.
-Siccome l'applicazione servirà per raccogliere dati di persone sconosciute si presume che gli utenti non abbiano alcuna competenza informatica, l'applicazione potrebbe venire utilizzata sa qualunque dispositivo che possa avere accesso ad internet, quindi:
+L'applicazione servirà per raccogliere dati di persone sconosciute si presume che gli utenti non abbiano alcuna competenza informatica, l'applicazione potrebbe venire utilizzata sa qualunque dispositivo che possa avere accesso ad internet, quindi:
  - Dispositivi Mobile (Smartphone / Tablet)
  - Dispositivi Desktop
 
@@ -196,7 +195,7 @@ Siccome l'applicazione servirà per raccogliere dati di persone sconosciute si p
 
 #### Hardware
 - Sviluppo
-    - portatile: Apple - MacBookPro 2017
+    - portatile: Apple - MacBookPro 2018
         - Processore: Intel Core i7
         - RAM: 16GB
         - Disk: 1TB SSD
@@ -774,7 +773,6 @@ In questo progetto ho imparato a gestirmi meglio con i tempi di consegna, gestir
 
 ## Allegati
 
-- Diari di lavoro (cartella: /diary)
-- Codici sorgente (cartella file web: /web; cartella classi: /src)
+- Diari di lavoro
 
 </span>
