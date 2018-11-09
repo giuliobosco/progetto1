@@ -54,7 +54,7 @@ Docenti: Luca Muggiasca, Adriano Barchi, Francesco Mussi, Elisa Nannini \
 Scuola: Scuola Arti e Mestieri di Trevano \
 Sezione: SAMT I3AA \
 Data inizio: 05.09.2018 \
-Data fine: 09.11.2018
+Data fine: 09.11.2018  
 Git-Hub link: [https://github.com/boscogiulio/progetto1](https://github.com/boscogiulio/progetto1)
 
 ### Abstract
@@ -774,5 +774,5 @@ In questo progetto ho imparato a gestirmi meglio con i tempi di consegna, gestir
 ## Allegati
 
 - Diari di lavoro
-
+- Codice sorgente disponibile su:  [https://github.com/boscogiulio/progetto1](https://github.com/boscogiulio/progetto1)
 </span>
